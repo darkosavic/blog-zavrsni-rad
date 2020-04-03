@@ -13,9 +13,9 @@ class PostsSeeder extends Seeder
     {
         
         $categoryIds = App\Models\Category::all()->pluck("id")->toArray();
-        
+               
         $faker = \Faker\Factory::create();
-        \DB::table('posts')->truncate();
+//        \DB::table('posts')->truncate();
 
         for($x=0; $x<=10; $x++){
             \DB::table('posts')->insert([

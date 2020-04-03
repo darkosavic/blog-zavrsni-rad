@@ -11,6 +11,8 @@ class CommentsSeeder extends Seeder
      */
     public function run()
     {
+        $postIds = App\Models\Post::all()->pluck("id")->toArray();
+        
         $faker = \Faker\Factory::create();
         \DB::table('comments')->truncate();
 
@@ -19,6 +21,7 @@ class CommentsSeeder extends Seeder
                 'commenter' => $faker->name,
                 'email' => $faker->email,
                 'text' => $faker->text,
+                'post_id' => $faker->randomElement($postIds),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);

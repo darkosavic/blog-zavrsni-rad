@@ -11,4 +11,12 @@ class Comment extends Model
     public function getPhotoUrl() {
         return '/themes/front/img/user.svg';
     }
+    
+    /**
+     * Get the post that owns the comment.
+     */
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
 }
