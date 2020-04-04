@@ -6,7 +6,14 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function functionName($param) {
-        
+    
+    public function blog()
+    {  
+       return view('front.pages.blog');
+    }
+    
+    public function contact()
+    {
+        return view('front.pages.contact');
     }
 }

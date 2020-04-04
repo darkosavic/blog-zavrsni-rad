@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\GaleryImages;
+use App\Models\Post;
 
 class IndexController extends Controller
 {
@@ -11,8 +12,22 @@ class IndexController extends Controller
         
         $galeryImages = (new GaleryImages())->getPhotoUrls();
         
+        $newFetaured = Post::query()
+//                ->where('created_at', 'DESC')
+//                ->whereDate('created_at')
+                ->orderBy('created_at', 'DESC')
+                ->limit(3)
+                ->get();
+        
+        
+        
         return view('front.index.index', [
             'allGaleryImages' => $galeryImages,
+            'newFeaturedPosts' => $newFetaured,
         ]);
     }
 }
+
+            
+          
+       
