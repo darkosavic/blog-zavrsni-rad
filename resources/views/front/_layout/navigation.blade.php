@@ -28,9 +28,9 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="{{route('front.index.index')}}" class="nav-link active">Home</a>
                     </li>
-                    <li class="nav-item"><a href="{{route('front.index.blog')}}" class="nav-link">Blog</a>
+                    <li class="nav-item"><a href="{{route('front.pages.blog')}}" class="nav-link">Blog</a>
                     </li>
-                    <li class="nav-item"><a href="{{route('front.index.contact')}}" class="nav-link">Contact</a>
+                    <li class="nav-item"><a href="{{route('front.pages.contact')}}" class="nav-link">Contact</a>
                     </li>
                 </ul>
                 <div class="navbar-text"><a href="/themes/front/#" class="search-btn"><i class="icon-search-1"></i></a></div>

@@ -10,15 +10,15 @@
                 <div class="row">
                     <!-- post -->
                     <div class="post col-xl-6">
-                        <div class="post-thumbnail"><a href="/themes/front/blog-post.html"><img src="/themes/front/img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
+                        <div class="post-thumbnail"><a href="{{('front.blog_section.post')}}"><img src="/themes/front/img/blog-post-1.jpeg" alt="..." class="img-fluid"></a></div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
                                 <div class="date meta-last">20 May | 2016</div>
-                                <div class="category"><a href="/themes/front/blog-category.html">Business</a></div>
-                            </div><a href="/themes/front/blog-post.html">
+                                <div class="category"><a href="{{('front.blog_section.category')}}">Business</a></div>
+                            </div><a href="{{('front.blog_section.post')}}">
                                 <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <footer class="post-footer d-flex align-items-center"><a href="/themes/front/blog-author.html" class="author d-flex align-items-center flex-wrap">
+                            <footer class="post-footer d-flex align-items-center"><a href="{{('front.blog_section.author')}}" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar"><img src="/themes/front/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
                                     <div class="title"><span>John Doe</span></div></a>
                                 <div class="date"><i class="icon-clock"></i> 2 months ago</div>
@@ -28,15 +28,15 @@
                     </div>
                     <!-- post             -->
                     <div class="post col-xl-6">
-                        <div class="post-thumbnail"><a href="/themes/front/blog-post.html"><img src="/themes/front/img/blog-post-2.jpg" alt="..." class="img-fluid"></a></div>
+                        <div class="post-thumbnail"><a href="{{('front.blog_section.post')}}"><img src="/themes/front/img/blog-post-2.jpg" alt="..." class="img-fluid"></a></div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
                                 <div class="date meta-last">20 May | 2016</div>
-                                <div class="category"><a href="/themes/front/blog-category.html">Business</a></div>
-                            </div><a href="/themes/front/blog-post.html">
+                                <div class="category"><a href="{{('front.blog_section.category')}}">Business</a></div>
+                            </div><a href="{{('front.blog_section.post')}}">
                                 <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <div class="post-footer d-flex align-items-center"><a href="/themes/front/blog-author.html" class="author d-flex align-items-center flex-wrap">
+                            <div class="post-footer d-flex align-items-center"><a href="{{('front.blog_section.author')}}" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar"><img src="/themes/front/img/avatar-2.jpg" alt="..." class="img-fluid"></div>
                                     <div class="title"><span>John Doe</span></div></a>
                                 <div class="date"><i class="icon-clock"></i> 2 months ago</div>
@@ -46,15 +46,15 @@
                     </div>
                     <!-- post             -->
                     <div class="post col-xl-6">
-                        <div class="post-thumbnail"><a href="/themes/front/blog-post.html"><img src="/themes/front/img/blog-post-3.jpeg" alt="..." class="img-fluid"></a></div>
+                        <div class="post-thumbnail"><a href="{{('front.blog_section.post')}}"><img src="/themes/front/img/blog-post-3.jpeg" alt="..." class="img-fluid"></a></div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
                                 <div class="date meta-last">20 May | 2016</div>
-                                <div class="category"><a href="/themes/front/blog-category.html">Business</a></div>
-                            </div><a href="/themes/front/blog-post.html">
+                                <div class="category"><a href="{{('front.blog_section.category')}}">Business</a></div>
+                            </div><a href="{{('front.blog_section.post')}}">
                                 <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
                             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                            <div class="post-footer d-flex align-items-center"><a href="/themes/front/blog-author.html" class="author d-flex align-items-center flex-wrap">
+                            <div class="post-footer d-flex align-items-center"><a href="{{('front.blog_section.author')}}" class="author d-flex align-items-center flex-wrap">
                                     <div class="avatar"><img src="/themes/front/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
                                     <div class="title"><span>John Doe</span></div></a>
                                 <div class="date"><i class="icon-clock"></i> 2 months ago</div>
