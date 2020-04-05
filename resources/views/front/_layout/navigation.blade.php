@@ -28,7 +28,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="{{route('front.index.index')}}" class="nav-link active">Home</a>
                     </li>
-                    <li class="nav-item"><a href="{{route('front.pages.blog')}}" class="nav-link">Blog</a>
+                    <li class="nav-item"><a href="{{route('front.blog.index')}}" class="nav-link">Blog</a>
                     </li>
                     <li class="nav-item"><a href="{{route('front.pages.contact')}}" class="nav-link">Contact</a>
                     </li>

@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <h1>Bootstrap 4 Blog - A free template by Bootstrap Temple</h1>
-                    <a href="{{route('front.blog_section.post')}}" class="hero-link">Discover More</a>
+                    <a href="#" class="hero-link">Discover More</a>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <h1>Bootstrap 4 Blog - Some other title in slide</h1>
-                    <a href="{{route('front.blog_section.category')}}" class="hero-link">Checkout More</a>
+                    <a href="#" class="hero-link">Checkout More</a>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <h1>This is third slide, there will be more!</h1>
-                    <a href="{{route('front.blog_section.tag')}}" class="hero-link">Findout More</a>
+                    <a href="#" class="hero-link">Findout More</a>
                 </div>
             </div>
         </div>

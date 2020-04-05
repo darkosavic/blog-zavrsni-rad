@@ -8,11 +8,6 @@ use App\Mail\ContactFormMail;
 class PagesController extends Controller
 {
     
-    public function blog()
-    {  
-       return view('front.pages.blog');
-    }
-    
     public function contactUs()
     {
 //        return view('front.pages.contact');
