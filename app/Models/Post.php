@@ -48,4 +48,8 @@ class Post extends Model
         
         return $timeBetween->format("%m Minutes");
     }
+    
+    public function displayDateWithPipe() {
+        return $this->created_at->format("d M | y");
+    }
 }

@@ -12,4 +12,10 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Post');
     }
+    
+    public function getFrontUrl() {
+        return route('front.blog.single-category', [
+            'category' => $this->id
+        ]);
+    }
 }

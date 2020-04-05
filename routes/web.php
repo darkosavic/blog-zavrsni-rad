@@ -17,7 +17,7 @@ Route::get('/blog', 'BlogController@index')->name('front.blog.index');
 Route::get('/contact', 'PagesController@contactUs')->name('front.pages.contact');
 Route::post('/conract/send-message', 'PagesController@sendMessage')->name('front.pages.sendMessage');
 
-//Route::get('/products/single/{product}', 'ProductsController@single')->name('front.products.single-product');
+Route::get('/categories/single/{category}', 'BlogController@singleCategory')->name('front.blog.single-category');
 
 
 //Route::get('/contact-us', 'ContactController@index')->name('front.contact.index');
