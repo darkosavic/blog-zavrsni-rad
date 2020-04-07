@@ -8,7 +8,7 @@
                 <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last">{{$post->displayDateWithPipe()}}</div>
                     <div class="category"><a href="/themes/front/blog-category.html">{{$post->category->name}}</a></div>
-                </div><a href="/themes/front/blog-post.html">
+                </div><a href="{{$post->getPostUrl()}}">
                     <h3 class="h4">{{$post->title}}</h3></a>
                 <p class="text-muted">{{substr($post->body, 0, 100)}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="/themes/front/blog-author.html" class="author d-flex align-items-center flex-wrap">

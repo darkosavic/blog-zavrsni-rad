@@ -15,7 +15,7 @@ class Category extends Model
     
     public function getFrontUrl() {
         return route('front.blog.single-category', [
-            'category' => $this->id
+            'category' => $this->name
         ]);
     }
 }

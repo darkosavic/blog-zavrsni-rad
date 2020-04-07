@@ -18,7 +18,7 @@ Route::get('/contact', 'ContactController@contactUs')->name('front.contact.conta
 Route::post('/contact/send-message', 'ContactController@sendMessage')->name('front.contact.sendMessage');
 
 Route::get('/categories/single/{category}', 'BlogController@singleCategory')->name('front.blog.single-category');
-Route::get('/single-post', 'BlogController@singlePost')->name('front.blog.post');
+Route::get('/single-post/{post}', 'BlogController@singlePost')->name('front.blog.post');
 
 
 //Route::get('/contact-us', 'ContactController@index')->name('front.contact.index');

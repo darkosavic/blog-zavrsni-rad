@@ -3,7 +3,7 @@
         <div class="text-inner d-flex align-items-center">
             <div class="content">
                 <header class="post-header">
-                    <div class="category"><a href="/themes/front/blog-category.html">{{$newFetaured->category->name}}</a></div><a href="/themes/front/blog-post.html">
+                    <div class="category"><a href="/themes/front/blog-category.html">{{$newFetaured->category->name}}</a></div><a href="{{$newFetaured->getPostUrl()}}">
                         <h2 class="h4">{{$newFetaured->title}}</h2></a>
                 </header>
                 <p>{{$newFetaured->getBodyPreview()}}</p>
