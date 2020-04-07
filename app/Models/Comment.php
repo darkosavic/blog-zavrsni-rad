@@ -17,6 +17,10 @@ class Comment extends Model
      */
     public function post()
     {
-        return $this->belongsTo('App\Post');
+        return $this->belongsTo('App\Models\Post');
+    }
+    
+    public function displayDate() {
+        return $this->created_at->format("M Y");
     }
 }

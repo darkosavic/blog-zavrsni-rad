@@ -11,16 +11,16 @@
               <div class="post-thumbnail"><img src="/themes/front/img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
-                  <div class="category"><a href="/themes/front/blog-category.html">Business</a></div>
+                    <div class="category"><a href="{{$post->category->getFrontUrl()}}">{{$post->category->name}}</a></div>
                 </div>
-                <h1>Diversity in Engineering: The Effect on Questions<a href="/themes/front/#"><i class="fa fa-bookmark-o"></i></a></h1>
+                <h1>{{$post->title}}<a href="/themes/front/#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="/themes/front/blog-author.html" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="/themes/front/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                     <div class="title"><span>John Doe</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
-                    <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                    <div class="views"><i class="icon-eye"></i> 500</div>
-                    <div class="comments meta-last"><a href="/themes/front/#post-comments"><i class="icon-comment"></i>12</a></div>
+                    <div class="date"><i class="icon-clock"></i> {{$post->getTimeFormattedForUi()}}</div>
+                    <div class="views"><i class="icon-eye"></i> {{$post->numberOfViews}}</div>
+                    <div class="comments meta-last"><a href="#post-comments"><i class="icon-comment"></i>{{count($post->comments)}}</a></div>
                   </div>
                 </div>
                 <div class="post-body">
@@ -48,11 +48,10 @@
                     </div>
                     <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
                 <div class="post-comments" id="post-comments">
-                  <header>
-                    <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
-                  </header>
                   <!--Post Comment-->
-                  @include('front.blog.post_partials.post_comment')
+                  @include('front.blog.post_partials.post_comment', [
+                    'comments' => $post->comments
+                  ])
                 </div>
                 <div class="add-comment">
                   <header>
