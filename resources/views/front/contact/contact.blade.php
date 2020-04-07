@@ -18,7 +18,7 @@
     <div class="row">
         <!-- Latest Posts -->
         
-        @include('front.pages.partials.contact_form')
+        @include('front.contact.partials.contact_form')
             
         <aside class="col-lg-4">
             <!-- Widget [Contact Widget]-->

@@ -64,7 +64,7 @@
         <div class="row">
             <div class="col-md-7">
                 <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2>
-                <a href="{{route('front.pages.contact')}}" class="hero-link">Contact Us</a>
+                <a href="{{route('front.contact.contact')}}" class="hero-link">Contact Us</a>
             </div>
         </div>
     </div>

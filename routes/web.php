@@ -14,8 +14,8 @@
 Route::get('/', 'IndexController@index')->name('front.index.index');
 
 Route::get('/blog', 'BlogController@index')->name('front.blog.index');
-Route::get('/contact', 'PagesController@contactUs')->name('front.pages.contact');
-Route::post('/conract/send-message', 'PagesController@sendMessage')->name('front.pages.sendMessage');
+Route::get('/contact', 'ContactController@contactUs')->name('front.contact.contact');
+Route::post('/contact/send-message', 'ContactController@sendMessage')->name('front.contact.sendMessage');
 
 Route::get('/categories/single/{category}', 'BlogController@singleCategory')->name('front.blog.single-category');
 

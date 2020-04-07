@@ -26,11 +26,12 @@
             <!-- Navbar Menu -->
             <div id="navbarcollapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a href="{{route('front.index.index')}}" class="nav-link active">Home</a>
+                    
+                    <li class="nav-item"><a href="{{route('front.index.index')}}" class="nav-link " >Home</a>
                     </li>
-                    <li class="nav-item"><a href="{{route('front.blog.index')}}" class="nav-link">Blog</a>
+                    <li class="nav-item"><a href="{{route('front.blog.index')}}"  class="nav-link " >Blog</a>
                     </li>
-                    <li class="nav-item"><a href="{{route('front.pages.contact')}}" class="nav-link">Contact</a>
+                    <li class="nav-item" ><a href="{{route('front.contact.contact')}}" class="nav-link ">Contact</a>
                     </li>
                 </ul>
                 <div class="navbar-text"><a href="/themes/front/#" class="search-btn"><i class="icon-search-1"></i></a></div>

@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
 
-class PagesController extends Controller
+class ContactController extends Controller
 {
     
     public function contactUs()
     {
 //        return view('front.pages.contact');
         $systemMessage = session()->pull('system_message');
-        return view('front.pages.contact', [
+        return view('front.contact.contact', [
             'system_message' => $systemMessage,
         ]);
     }
@@ -36,6 +36,6 @@ class PagesController extends Controller
                 'We have recieved your message, we will contact you soon!'
         );
 
-        return redirect()->route('front.pages.contact');
+        return redirect()->route('front.contact.contact');
     }
 }

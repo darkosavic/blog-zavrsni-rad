@@ -1,6 +1,6 @@
 <main class="col-lg-8"> 
     <div class="container">
-        <form action="{{route('front.pages.sendMessage')}}" method="post" class="commenting-form" name="email_form">
+        <form action="{{route('front.contact.sendMessage')}}" method="post" class="commenting-form" name="email_form">
             @csrf
             <div class="row">
                 <div class="form-group col-md-6">

@@ -14,7 +14,7 @@ class BlogController extends Controller {
         $posts = Post::query()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
-        
+
         $categories = Category::query()
                 ->orderBy('name', 'ASC')
                 ->get();
@@ -23,19 +23,25 @@ class BlogController extends Controller {
                 ->orderBy('name', 'ASC')
                 ->get();
 
+        $latestPosts = Post::query()
+                ->orderBy('created_at', 'DESC')
+                ->limit(3)
+                ->get();
+
         return view('front.blog.index', [
             "posts" => $posts,
             "categories" => $categories,
-            "tags" => $tags
+            "tags" => $tags,
+            "latestPosts" => $latestPosts
         ]);
     }
-    
+
     public function singleCategory(Category $category) {
         $posts = Category::find($category->id)
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
-        
+
         $categories = Category::query()
                 ->orderBy('name', 'ASC')
                 ->get();
@@ -43,12 +49,18 @@ class BlogController extends Controller {
         $tags = Tag::query()
                 ->orderBy('name', 'ASC')
                 ->get();
-        
+
+        $latestPosts = Post::query()
+                ->orderBy('created_at', 'DESC')
+                ->limit(3)
+                ->get();
+
         return view('front.blog.index', [
-            "main_title" => "Category " . $category->name, 
+            "main_title" => "Category " . $category->name,
             "posts" => $posts,
             "categories" => $categories,
-            "tags" => $tags
+            "tags" => $tags,
+            "latestPosts" => $latestPosts
         ]);
     }
 
