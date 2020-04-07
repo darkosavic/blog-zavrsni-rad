@@ -3,6 +3,14 @@
 @section('content')
 
 <div class="container">
+    @isset($author_page_title)
+    <h2 class="mb-3 author d-flex align-items-center flex-wrap">
+        <div class="avatar"><img src="{{$author_image}}" alt="..." class="img-fluid rounded-circle"></div>
+        <div class="title">
+            <span>{{$author_page_title}}</span>
+        </div>
+    </h2>
+    @endisset
     @isset($main_title)
     <h2 class="mb-3">{{$main_title}}</h2>
     @endisset
@@ -22,11 +30,11 @@
             ])
             <!-- Widget [Categories Widget]-->
             @include('front.blog.partials.categories_widget', [
-                'categories' => $categories
+            'categories' => $categories
             ])
             <!-- Widget [Tags Cloud Widget] -->  
             @include('front.blog.partials.tags_widget', [
-                'tags' => $tags
+            'tags' => $tags
             ])
         </aside>
     </div>

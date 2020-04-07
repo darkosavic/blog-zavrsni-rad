@@ -18,6 +18,10 @@ class Post extends Model {
     public function comments() {
         return $this->hasMany('App\Models\Comment');
     }
+    
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 
     public function getBodyPreview() {
         return substr($this->body, 0, 300);

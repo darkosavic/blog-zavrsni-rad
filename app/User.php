@@ -36,4 +36,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function posts() {
+        return $this->hasMany('App\Models\Post');
+    }
+    
+    public function getAvatar() {
+        return '/themes/front/img/avatar-1.jpg';
+    }
+    
+    public function getSingleUserUrl() {
+        return route('front.blog.single-user', [
+            'user' => $this->id
+        ]);
+    }
 }

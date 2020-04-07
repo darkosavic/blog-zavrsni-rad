@@ -14,9 +14,9 @@
                     <div class="category"><a href="{{$post->category->getFrontUrl()}}">{{$post->category->name}}</a></div>
                 </div>
                 <h1>{{$post->title}}<a href="/themes/front/#"><i class="fa fa-bookmark-o"></i></a></h1>
-                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="/themes/front/blog-author.html" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="/themes/front/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
+                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="{{$post->user->getSingleUserUrl()}}" class="author d-flex align-items-center flex-wrap">
+                        <div class="avatar"><img src="{{$post->user->getAvatar()}}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{$post->user->name}}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="icon-clock"></i> {{$post->getTimeFormattedForUi()}}</div>
                     <div class="views"><i class="icon-eye"></i> {{$post->numberOfViews}}</div>
