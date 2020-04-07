@@ -52,4 +52,10 @@ class Post extends Model
     public function displayDateWithPipe() {
         return $this->created_at->format("d M | y");
     }
+    
+    public function getPostUrl() {
+        return route('front.blog.post', [
+            'post' => $this->id
+        ]);
+    }    
 }

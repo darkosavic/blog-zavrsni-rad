@@ -3,7 +3,7 @@
         <h3 class="h6">Latest Posts</h3>
     </header>
     @foreach($latestPosts as $post)
-    <div class="blog-posts"><a href="/themes/front/blog-post.html">
+    <div class="blog-posts"><a href="{{$post->getPostUrl()}}">
             <div class="item d-flex align-items-center">
                 <div class="image"><img src="/themes/front/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
                 <div class="title"><strong>{{($post->title)}}</strong>
