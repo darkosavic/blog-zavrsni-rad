@@ -38,6 +38,21 @@ class BlogController extends Controller {
             "latestPosts" => $this->getLatestPosts()
         ]);
     }
+    
+    public function singleTag(Tag $tag) {
+        $posts = Tag::find($tag->id)
+                ->posts()
+                ->orderBy('created_at', 'DESC')
+                ->paginate(4);
+
+        return view('front.blog.index', [
+            "main_title" => "Tag \"" . $tag->name . "\"",
+            "posts" => $posts,
+            "categories" => $this->getCategories(),
+            "tags" => $this->getTags(),
+            "latestPosts" => $this->getLatestPosts()
+        ]);
+    }
 
     public function singleUser(User $user) {
         //Post::query()->where('title', 'LIKE', '%'.$request['search'].'%');

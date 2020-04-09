@@ -4,7 +4,7 @@
     </header>
     <ul class="list-inline">
         @foreach($tags as $tag)
-        <li class="list-inline-item"><a href="#" class="tag">{{$tag->name}}</a></li>
+        <li class="list-inline-item"><a href="{{$tag->getFrontUrl()}}" class="tag">{{$tag->name}}</a></li>
         @endforeach
     </ul>
 </div>

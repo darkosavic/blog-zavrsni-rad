@@ -39,7 +39,7 @@
                 </div>
                 <div class="post-tags">
                     @foreach($post->tags as $tag)
-                    <a href="/themes/front/blog-tag.html" class="tag">#{{$tag->name}}</a>
+                    <a href="{{$tag->getFrontUrl()}}" class="tag">#{{$tag->name}}</a>
                     @endforeach
                 </div>
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="/themes/front/#" class="prev-post text-left d-flex align-items-center">

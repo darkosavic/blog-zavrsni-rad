@@ -20,6 +20,7 @@ Route::post('/contact/send-message', 'ContactController@sendMessage')->name('fro
 Route::post('/comment/send-comment/{post}', 'CommentsController@sendComment')->name('front.comment.sendComment');
 
 Route::get('/categories/single/{category}', 'BlogController@singleCategory')->name('front.blog.single-category');
+Route::get('/tags/single/{tag}', 'BlogController@singleTag')->name('front.blog.single-tag');
 Route::get('/users/single/{user}', 'BlogController@singleUser')->name('front.blog.single-user');
 Route::get('/single-post/{post}', 'BlogController@singlePost')->name('front.blog.post');
 
