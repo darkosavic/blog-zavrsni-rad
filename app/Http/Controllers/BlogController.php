@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use \Illuminate\Http\Request;
 use \App\Models\Category;
 use \App\Models\Tag;
 use \App\Models\Post;
@@ -53,9 +53,24 @@ class BlogController extends Controller {
             "latestPosts" => $this->getLatestPosts()
         ]);
     }
+    
+    public function search(Request $request) {
+        $posts = Post::query()
+                ->where('title', 'LIKE', '%'.$request['search'].'%')
+                ->orWhere('body', 'LIKE', '%'.$request['search'].'%')
+                ->orderBy('created_at', 'DESC')
+                ->paginate(4);
 
+        return view('front.blog.index', [
+            "main_title" => "Results for search criteria \"" . $request['search'] . "\"",
+            "posts" => $posts,
+            "categories" => $this->getCategories(),
+            "tags" => $this->getTags(),
+            "latestPosts" => $this->getLatestPosts()
+        ]);
+    }
+    
     public function singleUser(User $user) {
-        //Post::query()->where('title', 'LIKE', '%'.$request['search'].'%');
         $posts = User::find($user->id)
                 ->posts()
                 ->orderBy('created_at', 'DESC')
