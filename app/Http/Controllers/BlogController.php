@@ -87,6 +87,8 @@ class BlogController extends Controller {
     }
 
     public function singlePost(Post $post) {
+        $this->incrementNumberOfViews($post);
+        
         $nextPostId = $post->id + 1;
         $previousPostId = $post->id - 1;
 
@@ -100,6 +102,11 @@ class BlogController extends Controller {
             "nextPost" => $nextPost,
             "previousPost" => $previousPost
         ]);
+    }
+    
+    private function incrementNumberOfViews(Post $post) {
+        $post->numberOfViews++;
+        $post->save();
     }
 
     private function getCategories() {
