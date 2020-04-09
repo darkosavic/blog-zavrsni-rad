@@ -22,6 +22,16 @@ class Post extends Model {
     public function user() {
         return $this->belongsTo('App\User');
     }
+    
+    public function tags()
+    {
+        return $this->belongsToMany(
+            Tag::class,
+            'tag_post',
+            'post_id',
+            'tag_id'
+        );
+    }
 
     public function getBodyPreview() {
         return substr($this->body, 0, 300);

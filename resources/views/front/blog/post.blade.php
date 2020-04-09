@@ -37,7 +37,11 @@
                   </blockquote>
                   <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
                 </div>
-                <div class="post-tags"><a href="/themes/front/blog-tag.html" class="tag">#Business</a><a href="/themes/front/blog-tag.html" class="tag">#Tricks</a><a href="/themes/front/blog-tag.html" class="tag">#Financial</a><a href="/themes/front/blog-tag.html" class="tag">#Economy</a></div>
+                <div class="post-tags">
+                    @foreach($post->tags as $tag)
+                    <a href="/themes/front/blog-tag.html" class="tag">#{{$tag->name}}</a>
+                    @endforeach
+                </div>
                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="/themes/front/#" class="prev-post text-left d-flex align-items-center">
                     <div class="icon prev"><i class="fa fa-angle-left"></i></div>
                     <div class="text"><strong class="text-primary">Previous Post </strong>
