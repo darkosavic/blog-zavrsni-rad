@@ -38,7 +38,7 @@ class BlogController extends Controller {
             "latestPosts" => $this->getLatestPosts()
         ]);
     }
-    
+
     public function singleTag(Tag $tag) {
         $posts = Tag::find($tag->id)
                 ->posts()
@@ -53,11 +53,11 @@ class BlogController extends Controller {
             "latestPosts" => $this->getLatestPosts()
         ]);
     }
-    
+
     public function search(Request $request) {
         $posts = Post::query()
-                ->where('title', 'LIKE', '%'.$request['search'].'%')
-                ->orWhere('body', 'LIKE', '%'.$request['search'].'%')
+                ->where('title', 'LIKE', '%' . $request['search'] . '%')
+                ->orWhere('body', 'LIKE', '%' . $request['search'] . '%')
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
 
@@ -69,7 +69,7 @@ class BlogController extends Controller {
             "latestPosts" => $this->getLatestPosts()
         ]);
     }
-    
+
     public function singleUser(User $user) {
         $posts = User::find($user->id)
                 ->posts()
@@ -87,11 +87,18 @@ class BlogController extends Controller {
     }
 
     public function singlePost(Post $post) {
+        $nextPostId = $post->id + 1;
+        $previousPostId = $post->id - 1;
+
+        $nextPost = Post::find($nextPostId);
+        $previousPost = Post::find($previousPostId);
         return view('front.blog.post', [
             "post" => $post,
             "categories" => $this->getCategories(),
             "tags" => $this->getTags(),
-            "latestPosts" => $this->getLatestPosts()
+            "latestPosts" => $this->getLatestPosts(),
+            "nextPost" => $nextPost,
+            "previousPost" => $previousPost
         ]);
     }
 
