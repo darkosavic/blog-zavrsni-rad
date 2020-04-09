@@ -28,3 +28,6 @@ Route::post('/search', 'BlogController@search')->name('front.blog.search');
 
 //Route::get('/contact-us', 'ContactController@index')->name('front.contact.index');
 //Route::post('/contact/send-message', 'ContactController@sendMessage')->name('front.contact.send_message');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
