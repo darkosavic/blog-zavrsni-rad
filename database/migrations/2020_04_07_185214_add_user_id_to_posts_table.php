@@ -13,7 +13,7 @@ class AddUserIdToPostsTable extends Migration {
      */
     public function up() {
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger("user_id")->default(1);
+            $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")->references("id")->on("users");
         });
     }
