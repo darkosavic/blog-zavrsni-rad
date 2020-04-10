@@ -11,7 +11,7 @@
                 </div><a href="{{$post->getPostUrl()}}">
                     <h3 class="h4">{{$post->title}}</h3></a>
                 <p class="text-muted">{{substr($post->body, 0, 100)}}</p>
-                <footer class="post-footer d-flex align-items-center"><a href="{{$post->getPostUrl()}}" class="author d-flex align-items-center flex-wrap">
+                <footer class="post-footer d-flex align-items-center"><a href="{{$post->user->getSingleUserUrl()}}" class="author d-flex align-items-center flex-wrap">
                         <div class="avatar"><img src="/themes/front/img/avatar-3.jpg" alt="..." class="img-fluid"></div>
                         <div class="title"><span>{{$post->user->name}}</span></div></a>
                     <div class="date"><i class="icon-clock"></i>{{$post->getTimeFormattedForUi()}}</div>

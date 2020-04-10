@@ -11,7 +11,7 @@ class TagsSeeder extends Seeder
      */
     public function run()
     {
-//        \DB::table('tags')->truncate();
+        \DB::table('tags')->truncate();
 
         $categories = ["Technology", "Fashion", "Sports", "Economy", "Business"];
 
