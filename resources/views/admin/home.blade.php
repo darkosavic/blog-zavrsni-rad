@@ -22,10 +22,24 @@
                 </p>
             </div>
             <div class="col-md-2">
-                <p class="card-text">IMPORTANT: <strong>NO</strong></p>
+                <p class="card-text">IMPORTANT: 
+                    <strong>
+                        @if($post->important)
+                        YES
+                        @else
+                        NO
+                        @endif
+                    </strong></p>
             </div>
             <div class="col-md-2">
-                <p class="card-text">DISABLED: <strong>NO</strong></p>
+                <p class="card-text">DISABLED: 
+                    <strong>
+                        @if($post->disabled)
+                        YES
+                        @else
+                        NO
+                        @endif
+                    </strong></p>
             </div>
             <div class="col-md-5">
                 <p class="card-text">TAGS:
@@ -42,7 +56,7 @@
             <a href="#" class="card-link" style="margin-right: 10px">Preview post</a>
             <a href="#" class="card-link" style="margin-right: 10px">Edit post</a>
             <a href="#" class="card-link" style="margin-right: 10px">Enable/Disable</a>
-            <a href="#" class="card-link" style="margin-right: 10px">Set important</a>
+            <a href="{{route('home.posts.important', ['post' => $post])}}" class="card-link" style="margin-right: 10px">Set important</a>
             <a href="#" class="card-link" style="margin-right: 10px">Delete post</a>
         </div>
     </div>

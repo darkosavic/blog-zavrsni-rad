@@ -32,7 +32,10 @@ Route::post('/search', 'BlogController@search')->name('front.blog.search');
 Auth::routes();
 
 Route::get('/admin/dashboard', 'HomeController@index')->name('home');
+
 Route::get('/admin/tags', 'TagController@index')->name('home.tags');
 Route::post('/admin/tags', 'TagController@addTag')->name('home.tags.add');
 Route::get('/admin/tags/{tag}', 'TagController@deleteTag')->name('home.tags.delete');
 Route::post('/admin/tags/{tag}', 'TagController@updateTag')->name('home.tags.update');
+
+Route::get('/admin/posts/important/{post}', 'PostController@setImportant')->name('home.posts.important');
