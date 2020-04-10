@@ -13,8 +13,8 @@ class IndexController extends Controller
         $galeryImages = (new GaleryImages())->getPhotoUrls();
         
         $newFetaured = Post::query()
-//                ->where('created_at', 'DESC')
-//                ->whereDate('created_at')
+                ->where('important', true)
+                ->where('disabled', false)
                 ->orderBy('created_at', 'DESC')
                 ->limit(3)
                 ->get();

@@ -13,8 +13,9 @@ class BlogController extends Controller {
 
     public function index() {
         $posts = Post::query()
+                ->where('disabled', false)
                 ->orderBy('created_at', 'DESC')
-                ->paginate(4);
+                ->paginate(12);
 
         return view('front.blog.index', [
             "posts" => $posts,
