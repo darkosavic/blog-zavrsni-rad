@@ -22,10 +22,10 @@
             <div class="col-md-4">
                 <div class="menus d-flex">
                     <ul class="list-unstyled">
-                        <li> <a href="/themes/front/index.html">Home</a></li>
-                        <li> <a href="/themes/front/blog.html">Blog</a></li>
-                        <li> <a href="/themes/front/contact.html">Contact</a></li>
-                        <li> <a href="/themes/front/#">Login</a></li>
+                        <li> <a href="{{route('front.index.index')}}">Home</a></li>
+                        <li> <a href={{route('front.blog.index')}}>Blog</a></li>
+                        <li> <a href={{route('front.contact.contact')}}>Contact</a></li>
+                        <li> <a href="{{route('home')}}">Login</a></li>
                     </ul>
                     <ul class="list-unstyled">
                         <li> <a href="/themes/front/blog-category.html">Growth</a></li>
@@ -35,36 +35,47 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="latest-posts"><a href="/themes/front/blog-post.html">
-                        <div class="post d-flex align-items-center">
-                            <div class="image"><img src="/themes/front/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
-                        </div></a><a href="/themes/front/blog-post.html">
-                        <div class="post d-flex align-items-center">
-                            <div class="image"><img src="/themes/front/img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
-                        </div></a><a href="/themes/front/blog-post.html">
-                        <div class="post d-flex align-items-center">
-                            <div class="image"><img src="/themes/front/img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                            <div class="title"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
-                        </div></a></div>
+            <div id="newestPosts" class="col-md-4">
+                
             </div>
         </div>
-    </div>
-    <div class="copyrights">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>&copy; 2017. All rights reserved. Your great site.</p>
-                </div>
-                <div class="col-md-6 text-right">
-                    <p>Template By <a href="/themes/front/https://bootstrapious.com/p/bootstrap-carousel" class="text-white">Bootstrapious</a>
-                        <!-- Please do not remove the backlink to Bootstrap Temple unless you purchase an attribution-free license @ Bootstrap Temple or support us at http://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :)                         -->
-                    </p>
+        <div class="copyrights">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2017. All rights reserved. Your great site.</p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>Template By <a href="/themes/front/https://bootstrapious.com/p/bootstrap-carousel" class="text-white">Bootstrapious</a>
+                            <!-- Please do not remove the backlink to Bootstrap Temple unless you purchase an attribution-free license @ Bootstrap Temple or support us at http://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :)                         -->
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </footer>
+@push('footer_javascript')
+<script type="text/javascript">
+
+    function refreshNewestPosts() {
+
+        // ajax funkcija vraca PROMISE 
+        $.ajax({
+            "url": "{{route('front.footer.newest_posts')}}",
+            "type": "get", //http method GET ili POST
+            "data": {}
+        }).done(function (response) {
+
+            $('#newestPosts').html(response);
+            console.log('Zavrseno ucitavanje najnovijih postova');
+            //console.log(response);
+        }).fail(function (jqXHR, textStatus, error) {
+            console.log('Greska prilikom ucitavanja najnovijih postova');
+        });
+    }
+
+    refreshNewestPosts(); 
+
+</script>
+@endpush
 

@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'IndexController@index')->name('front.index.index');
+Route::get('/newest-posts', 'IndexController@getNewestPosts')->name('front.footer.newest_posts');
 
 Route::get('/blog', 'BlogController@index')->name('front.blog.index');
 Route::get('/contact', 'ContactController@contactUs')->name('front.contact.contact');

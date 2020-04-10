@@ -24,6 +24,17 @@ class IndexController extends Controller
         return view('front.index.index', [
             'allGaleryImages' => $galeryImages,
             'newFeaturedPosts' => $newFetaured,
+        ]); 
+    }
+    
+    public function getNewestPosts() {
+        $newestPosts = Post::query()
+                ->orderBy('created_at', 'DESC')
+                ->limit(3)
+                ->get();
+        
+        return view('front._layout.partials.newest_posts_footer', [
+            'newestPosts' => $newestPosts,
         ]);
     }
 }

@@ -68,6 +68,8 @@
                 "autoplayHoverPause": true
             });
         </script>
+        
+        @stack('footer_javascript')
 
     </body>
 </html>

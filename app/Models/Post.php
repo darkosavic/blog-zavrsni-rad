@@ -64,13 +64,17 @@ class Post extends Model {
     public function displayDateWithPipe() {
         return $this->created_at->format("d M | y");
     }
+    
+    public function displayDateForFooterPost() {
+        return $this->created_at->format("F d, Y");
+    }
 
     public function getPostUrl() {
         return route('front.blog.post', [
             'post' => $this->id
         ]);
     }
-
+    
     public function getSendCommentUrl() {
         return route('front.comment.sendComment', [
             'post' => $this->id
