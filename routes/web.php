@@ -31,11 +31,31 @@ Route::post('/search', 'BlogController@search')->name('front.blog.search');
 //Route::post('/contact/send-message', 'ContactController@sendMessage')->name('front.contact.send_message');
 Auth::routes();
 
-Route::get('/admin/dashboard', 'HomeController@index')->name('home');
+Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function () {
+    
+    Route::get('/dashboard', 'HomeController@index')->name('home');
 
-Route::get('/admin/tags', 'TagController@index')->name('home.tags');
-Route::post('/admin/tags', 'TagController@addTag')->name('home.tags.add');
-Route::get('/admin/tags/{tag}', 'TagController@deleteTag')->name('home.tags.delete');
-Route::post('/admin/tags/{tag}', 'TagController@updateTag')->name('home.tags.update');
 
-Route::get('/admin/posts/important/{post}', 'PostController@setImportant')->name('home.posts.important');
+    Route::prefix('/tags')->group(function () {
+        
+        Route::get('/', 'TagController@index')->name('home.tags');
+        Route::post('/', 'TagController@addTag')->name('home.tags.add');
+        Route::get('/{tag}', 'TagController@deleteTag')->name('home.tags.delete');
+        Route::post('/{tag}', 'TagController@updateTag')->name('home.tags.update');
+        });
+    
+    Route::prefix('/categories')->group(function () { 
+        
+        Route::get('/', 'CategoryController@index')->name('home.categories');
+        Route::post('/', 'CategoryController@addCategory')->name('home.categories.add');
+        Route::get('/{category}', 'CategoryController@deleteCategory')->name('home.categories.delete');
+        Route::post('/{category}', 'CategoryController@updateCategory')->name('home.categories.update');
+        });
+
+
+    Route::get('/admin/posts/important/{post}', 'PostController@setImportant')->name('home.posts.important');
+    Route::get('/admin/posts/able-disable/{post}', 'PostController@ableDisable')->name('home.posts.ableDisable');
+    
+
+
+});

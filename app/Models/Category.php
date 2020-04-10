@@ -20,5 +20,16 @@ class Category extends Model {
             'category' => $this->id
         ]);
     }
-
+    
+    public function getDeleteUrl() {
+        return route('home.categories.delete', [
+            'category' => $this->id
+        ]);
+    }
+    
+    public function getUpdateUrl() {
+        return route('home.categories.update', [
+            'category' => $this->id
+        ]);
+    }
 }

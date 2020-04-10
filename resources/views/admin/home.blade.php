@@ -22,9 +22,9 @@
                 </p>
             </div>
             <div class="col-md-2">
-                <p class="card-text">IMPORTANT: 
+                <p class="card-text">DISABLED: 
                     <strong>
-                        @if($post->important)
+                        @if($post->disabled)
                         YES
                         @else
                         NO
@@ -32,9 +32,9 @@
                     </strong></p>
             </div>
             <div class="col-md-2">
-                <p class="card-text">DISABLED: 
+                <p class="card-text">IMPORTANT: 
                     <strong>
-                        @if($post->disabled)
+                        @if($post->important)
                         YES
                         @else
                         NO
@@ -55,7 +55,7 @@
         <div class="row card-footer">
             <a href="#" class="card-link" style="margin-right: 10px">Preview post</a>
             <a href="#" class="card-link" style="margin-right: 10px">Edit post</a>
-            <a href="#" class="card-link" style="margin-right: 10px">Enable/Disable</a>
+            <a href="{{route('home.posts.ableDisable', ['post' => $post])}}" class="card-link" style="margin-right: 10px">Enable/Disable</a>
             <a href="{{route('home.posts.important', ['post' => $post])}}" class="card-link" style="margin-right: 10px">Set important</a>
             <a href="#" class="card-link" style="margin-right: 10px">Delete post</a>
         </div>
