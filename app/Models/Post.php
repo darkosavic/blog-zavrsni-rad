@@ -9,27 +9,29 @@ class Post extends Model {
     protected $table = "posts";
 
     public function category() {
-        return $this->belongsTo('App\Models\Category');
+        return $this->belongsTo(
+                        Category::class,
+                        'category_id',
+                        'id');
     }
 
     /**
      * Get the comments for the blog post.
      */
     public function comments() {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class, 'post_id', 'id');
     }
-    
+
     public function user() {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\User::class, 'user_id', 'id');
     }
-    
-    public function tags()
-    {
+
+    public function tags() {
         return $this->belongsToMany(
-            Tag::class,
-            'tag_post',
-            'post_id',
-            'tag_id'
+                        Tag::class,
+                        'tag_post',
+                        'post_id',
+                        'tag_id'
         );
     }
 
@@ -64,7 +66,7 @@ class Post extends Model {
     public function displayDateWithPipe() {
         return $this->created_at->format("d M | y");
     }
-    
+
     public function displayDateForFooterPost() {
         return $this->created_at->format("F d, Y");
     }
@@ -74,7 +76,7 @@ class Post extends Model {
             'post' => $this->id
         ]);
     }
-    
+
     public function getSendCommentUrl() {
         return route('front.comment.sendComment', [
             'post' => $this->id

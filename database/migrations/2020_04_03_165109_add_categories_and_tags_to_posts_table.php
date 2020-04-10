@@ -14,8 +14,7 @@ class AddCategoriesAndTagsToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-           $table->unsignedBigInteger("category_id");
-           $table->foreign("category_id")->references("id")->on("categories");
+           $table->bigInteger("category_id");
         });
     }
 
@@ -27,7 +26,6 @@ class AddCategoriesAndTagsToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
             $table->dropColumn("category_id");
         });
     }

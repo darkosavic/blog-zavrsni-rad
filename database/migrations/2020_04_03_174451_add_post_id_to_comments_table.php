@@ -13,8 +13,7 @@ class AddPostIdToCommentsTable extends Migration {
      */
     public function up() {
         Schema::table('comments', function (Blueprint $table) {
-            $table->unsignedBigInteger("post_id");
-            $table->foreign("post_id")->references("id")->on("posts");
+            $table->bigInteger("post_id");
         });
     }
 
@@ -24,8 +23,7 @@ class AddPostIdToCommentsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('comments', function (Blueprint $table) {
-            $table->dropForeign(['post_id']);
+        Schema::table('comments', function (Blueprint $table) {;
             $table->dropColumn("post_id");
         });
     }

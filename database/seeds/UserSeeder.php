@@ -10,6 +10,7 @@ class UserSeeder extends Seeder {
      * @return void
      */
     public function run() {
+        \DB::table('users')->truncate();
         \DB::table('users')->insert([
             'name' => 'Aleksandar Dimic',
             'email' => 'aleksandar.dimic@cubes.rs',
@@ -18,13 +19,13 @@ class UserSeeder extends Seeder {
             'updated_at' => date('Y-m-d H:i:s'),
         ]);
 
-//        \DB::table('users')->insert([
-//            'name' => 'Pera Peric',
-//            'email' => 'pera.peric@cubes.rs',
-//            'password' => \Hash::make('cubesphp'),
-//            'created_at' => date('Y-m-d H:i:s'),
-//            'updated_at' => date('Y-m-d H:i:s'),
-//        ]);
+        \DB::table('users')->insert([
+            'name' => 'Pera Peric',
+            'email' => 'pera.peric@cubes.rs',
+            'password' => \Hash::make('cubesphp'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
         
         \DB::table('users')->insert([
             'name' => 'Darko Savic',

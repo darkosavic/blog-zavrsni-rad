@@ -10,6 +10,7 @@ class PostsSeeder extends Seeder {
      * @return void
      */
     public function run() {
+        \DB::table('posts')->truncate();
 
         $categoryIds = App\Models\Category::all()->pluck("id")->toArray();
         $userIds = App\User::all()->pluck("id")->toArray();

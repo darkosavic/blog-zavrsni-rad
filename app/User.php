@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
     
     public function posts() {
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Models\Post::class, 'user_id', 'id');
     }
     
     public function getAvatar() {

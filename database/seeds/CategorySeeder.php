@@ -10,6 +10,8 @@ class CategorySeeder extends Seeder {
      * @return void
      */
     public function run() {
+        
+        \DB::table('categories')->truncate();
 
         $categories = ["Growth", "Local", "Sales", "Tips", "Business"];
 
