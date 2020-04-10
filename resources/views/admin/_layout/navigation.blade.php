@@ -26,14 +26,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
+                <a class="nav-link" href="{{url('/admin/tags')}}">
+                    <span data-feather="tag"></span>
                     Tags
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2"></span>
+                    <span data-feather="users"></span>
                     Users
                 </a>
             </li>

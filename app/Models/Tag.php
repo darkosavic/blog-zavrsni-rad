@@ -23,4 +23,16 @@ class Tag extends Model
             'tag' => $this->id
         ]);
     }
+    
+    public function getDeleteUrl() {
+        return route('home.tags.delete', [
+            'tag' => $this->id
+        ]);
+    }
+    
+    public function getUpdateUrl() {
+        return route('home.tags.update', [
+            'tag' => $this->id
+        ]);
+    }
 }
