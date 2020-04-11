@@ -53,7 +53,7 @@
         </div>
 
         <div class="row card-footer">
-            <a href="#" class="card-link" style="margin-right: 10px">Preview post</a>
+            <a href="{{$post->getPostUrl()}}" class="card-link" style="margin-right: 10px">Preview post</a>
             <a href="{{route('home.posts.update', ['post' => $post])}}" class="card-link" style="margin-right: 10px">Edit post</a>
             <a href="{{route('home.posts.ableDisable', ['post' => $post])}}" class="card-link" style="margin-right: 10px">Enable/Disable</a>
             <a href="{{route('home.posts.important', ['post' => $post])}}" class="card-link" style="margin-right: 10px">Set important</a>

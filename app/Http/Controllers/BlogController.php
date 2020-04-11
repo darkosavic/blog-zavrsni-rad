@@ -8,6 +8,7 @@ use \App\Models\Tag;
 use \App\Models\Post;
 use \App\Models\Comment;
 use \App\User;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller {
 
@@ -88,6 +89,10 @@ class BlogController extends Controller {
     }
 
     public function singlePost(Post $post) {
+        if (!Auth::check() && $post->disabled) {
+            return abort(404);
+        }
+        
         $this->incrementNumberOfViews($post);
         
         $nextPostId = $post->id + 1;
