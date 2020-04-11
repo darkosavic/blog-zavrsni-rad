@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
+use App\Models\Post;
 
 class ContactController extends Controller
 {
@@ -14,6 +15,7 @@ class ContactController extends Controller
         $systemMessage = session()->pull('system_message');
         return view('front.contact.contact', [
             'system_message' => $systemMessage,
+            'latestPosts' => $this->getLatestPosts()
         ]);
     }
     
@@ -39,4 +41,12 @@ class ContactController extends Controller
 
         return redirect()->route('front.contact.contact');
     }
+    
+    private function getLatestPosts() {
+        return $latestPosts = Post::query()
+                ->orderBy('created_at', 'DESC')
+                ->limit(3)
+                ->get();
+    }
+    
 }
