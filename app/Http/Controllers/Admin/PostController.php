@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -24,5 +26,24 @@ class PostController extends Controller
         $post->save();
         
         return redirect()->route('home');
+    }
+    
+    public function idnexNew() {
+        return view('admin.partials.new_post', [
+            'tags' => $this->getTags(),
+            'categories' => $this->getCategories()
+        ]);
+    }
+    
+    private function getCategories() {
+        return Category::query()
+                        ->orderBy('name', 'ASC')
+                        ->get();
+    }
+
+    private function getTags() {
+        return Tag::query()
+                        ->orderBy('name', 'ASC')
+                        ->get();
     }
 }

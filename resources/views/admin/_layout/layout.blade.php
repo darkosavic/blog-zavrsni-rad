@@ -27,7 +27,7 @@
                 <li class="nav-item text-nowrap">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
+                               document.getElementById('logout-form').submit();">
                         Log out
                     </a>
 
@@ -42,7 +42,7 @@
             <div class="row">
                 @include('admin._layout.navigation')
                 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                @yield('content')
+                    @yield('content')
                 </main>
             </div>
         </div>
@@ -63,6 +63,13 @@
 
         <!-- Graphs -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+        <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+        
+        <script>
+            CKEDITOR.replace('post-body-add');
+        </script>
+
+
         <script>
             var ctx = document.getElementById("myChart");
             var myChart = new Chart(ctx, {

@@ -57,6 +57,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         
         Route::get('/important/{post}', 'PostController@setImportant')->name('home.posts.important');
         Route::get('/able-disable/{post}', 'PostController@ableDisable')->name('home.posts.ableDisable');
+        Route::get('new', 'PostController@idnexNew')->name('home.posts.new');
     });
 
 

@@ -8,9 +8,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{url('/admin/posts/new')}}">
                     <span data-feather="file"></span>
-                    Posts
+                    Add Post
                 </a>
             </li>
             <li class="nav-item">
