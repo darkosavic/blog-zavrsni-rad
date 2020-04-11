@@ -22,6 +22,7 @@ class ContactController extends Controller
             'your_name' => 'required|string|min:2|max:255',
             'your_email' => ['required', 'email', 'max:255'],
             'your_message' => ['required', 'string', 'min:50', 'max:500'],
+            'g-recaptcha-response' => 'recaptcha',
             ]);
         
         \Mail::to('darkosavic1997@gmail.com')->send(new ContactFormMail(

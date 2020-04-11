@@ -32,6 +32,7 @@
         <!-- owl carousel 2 stylesheet-->
         <link rel="stylesheet" href="/themes/front/plugins/owl-carousel2/assets/owl.carousel.min.css" id="theme-stylesheet">
         <link rel="stylesheet" href="/themes/front/plugins/owl-carousel2/assets/owl.theme.default.min.css" id="theme-stylesheet">
+        @yield('head_scripts')
     </head>
     <body>
 
