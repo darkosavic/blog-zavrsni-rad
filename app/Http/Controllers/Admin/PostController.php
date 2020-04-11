@@ -35,6 +35,28 @@ class PostController extends Controller
         ]);
     }
     
+    public function addPost(Request $request) {
+        // validation
+        $formData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'preview' => ['required', 'string', 'min:50', 'max:500'],
+            'body' => ['required', 'string'],
+            'important' => ['nullable', 'boolean'],
+            'disabled' => ['nullable', 'boolean'],
+            'category_id' => ['required', 'numeric', 'exists:categories,id'],
+            'tag_id' => ['required', 'array', 'exists:tags,id']
+        ]);
+        $post = new Post();
+        $post->fill($formData);
+        $post->user_id = \Illuminate\Support\Facades\Auth::user()->id;
+        $post->imageUrl = "/themes/front/img/blog-post-3.jpeg";
+        $post->save();
+        
+        $post->tags()->sync($formData['tag_id']);
+        
+        return redirect()->route('home');
+    }
+    
     private function getCategories() {
         return Category::query()
                         ->orderBy('name', 'ASC')

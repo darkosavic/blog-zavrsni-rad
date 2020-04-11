@@ -66,7 +66,7 @@
         <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
         
         <script>
-            CKEDITOR.replace('post-body-add');
+            CKEDITOR.replace('body');
         </script>
 
 

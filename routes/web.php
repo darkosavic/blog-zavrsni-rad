@@ -1,15 +1,15 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+  |--------------------------------------------------------------------------
+  | Web Routes
+  |--------------------------------------------------------------------------
+  |
+  | Here is where you can register web routes for your application. These
+  | routes are loaded by the RouteServiceProvider within a group which
+  | contains the "web" middleware group. Now create something great!
+  |
+ */
 //FRONT
 Route::get('/', 'IndexController@index')->name('front.index.index');
 Route::get('/newest-posts', 'IndexController@getNewestPosts')->name('front.footer.newest_posts');
@@ -29,36 +29,33 @@ Route::post('/search', 'BlogController@search')->name('front.blog.search');
 
 //AUTH
 Auth::routes(); //registracija ruta: /login, /password/reset ...
-
-
 //ADMIN
 Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function () {
-    
+
     Route::get('/dashboard', 'HomeController@index')->name('home');
 
 
     Route::prefix('/tags')->group(function () {
-        
+
         Route::get('/', 'TagController@index')->name('home.tags');
         Route::post('/', 'TagController@addTag')->name('home.tags.add');
         Route::get('/{tag}', 'TagController@deleteTag')->name('home.tags.delete');
         Route::post('/{tag}', 'TagController@updateTag')->name('home.tags.update');
     });
-    
-    Route::prefix('/categories')->group(function () { 
-        
+
+    Route::prefix('/categories')->group(function () {
+
         Route::get('/', 'CategoryController@index')->name('home.categories');
         Route::post('/', 'CategoryController@addCategory')->name('home.categories.add');
         Route::get('/{category}', 'CategoryController@deleteCategory')->name('home.categories.delete');
         Route::post('/{category}', 'CategoryController@updateCategory')->name('home.categories.update');
     });
 
-    Route::prefix('/posts')->group(function () { 
-        
+    Route::prefix('/posts')->group(function () {
+
         Route::get('/important/{post}', 'PostController@setImportant')->name('home.posts.important');
         Route::get('/able-disable/{post}', 'PostController@ableDisable')->name('home.posts.ableDisable');
         Route::get('new', 'PostController@idnexNew')->name('home.posts.new');
+        Route::post('new', 'PostController@addPost')->name('home.posts.new.submit');
     });
-
-
 });

@@ -1,14 +1,16 @@
 @extends('admin._layout.layout')
 
 @section('content')
-
-<form>
+{{$errors}}
+<form action="{{route('home.posts.new.submit')}}" method="post" >
+    @csrf
     <div class="form-group">
         <label for="title">Title</label>
         <input 
             type="text" 
             class="form-control"
             id="title"
+            name="title"
             placeholder="Your post title">
     </div>
 
@@ -17,6 +19,7 @@
         <textarea 
             class="form-control" 
             id="preview" 
+            name="preview"
             rows="5"
             minlength="50"
             maxlength="500">
@@ -28,48 +31,76 @@
         <textarea 
             class="form-control" 
             id="body"
-            name="post-body-add">               
+            name="body"
+            rows="15">               
         </textarea>
-       
+
     </div>
 
     <div class="form-group">
         <label for="category">Choose category</label>
-        <select class="form-control" id="category">
+        <select class="form-control" id="category" name="category_id">
+            <option value="">-- Choose Category --</option>
             @foreach($categories as $category)
-            <option>{{$category->name}}</option>
+            <option 
+                value="{{$category->id}}"
+                @if($category->id == old('category_id'))
+                selected
+                @endif>
+                {{$category->name}}</option>
             @endforeach
         </select>
     </div>
 
     <div class="form-group">
         <label for="tags">Choose tags</label>
-        <div id="tags">
+        <select 
+            name="tag_id[]"
+            class="form-control" 
+            multiple
+            >
             @foreach($tags as $tag)
-            <div class="form-check form-check-inline">
-                <input 
-                    class="form-check-input"
-                    type="checkbox"
-                    id="tag-{{$tag->name}}"
-                    value="{{$tag}}">
-                <label class="form-check-label" for="tag-{{$tag->name}}">{{$tag->name}}</label>
-            </div>
+            <option 
+                value="{{$tag->id}}"
+                @if(
+                is_array(old('tag_id'))
+                && in_array($tag->id, old('tag_id'))
+                )
+                selected
+                @endif
+                >{{$tag->name}}</option>
             @endforeach
-        </div>
+        </select>
     </div>
 
     <div class="form-group">
         <label for="other-options">Other options</label>
         <div id="other-options">
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">Important</label>
+                <input 
+                    class="form-check-input"
+                    type="checkbox"
+                    name="important"
+                    value="1"
+                    @if(1 == old('important'))
+                    checked
+                    @endif>
+                    <label class="form-check-label" for="inlineCheckbox1">Important</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">Disabled</label>
+                <input 
+                    class="form-check-input"
+                    type="checkbox"
+                    name="disabled"
+                    value="1"
+                    @if(1 == old('disabled'))
+                    checked
+                    @endif>
+                    <label class="form-check-label" for="inlineCheckbox1">Disabled</label>
             </div>
         </div>
     </div>
+
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit post</button>
 </form>
 @endsection
