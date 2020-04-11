@@ -70,11 +70,28 @@
     </div>
 </section>
 <!-- Latest Posts -->
+<section class="latest-posts"> 
+    <div class="container">
+        <header> 
+            <h2>Latest from the blog</h2>
+            <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </header>
+        <div class="owl-carousel" id="latest-posts-slider">
+        @for($i = 0; $i < count($latestPosts); $i+=3)
+        @include('front.index.latest_posts', [
+            'firstPost' => $latestPosts[$i],
+            'secondPost' => $latestPosts[$i+1],
+            'thirdPost' => $latestPosts[$i+2]
+        ])
+        @endfor
+        </div>
+    </div>
+</section>
 
- Gallery Section
-    <section class="gallery no-padding">
+<!--Gallery Section-->
+<section class="gallery no-padding">
     <div class="row">
-        
+
 
         @foreach($allGaleryImages as $galeryImage)
         @include('front.index.single_galery_image', [

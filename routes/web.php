@@ -12,7 +12,6 @@
 */
 //FRONT
 Route::get('/', 'IndexController@index')->name('front.index.index');
-//Route::get('/latest-posts', 'IndexController@latestPostsIndex')->name('front.index.latest_posts');
 Route::get('/newest-posts', 'IndexController@getNewestPosts')->name('front.footer.newest_posts');
 
 

@@ -19,11 +19,10 @@ class IndexController extends Controller
                 ->limit(3)
                 ->get();
         
-        
-        
         return view('front.index.index', [
             'allGaleryImages' => $galeryImages,
             'newFeaturedPosts' => $newFetaured,
+            'latestPosts' => $this->getLatestPosts()
         ]); 
     }
     
@@ -38,18 +37,15 @@ class IndexController extends Controller
         ]);
     }
     
-//    public function latestPostsIndex() {
-//        
-//        $latestPost = Post::query()
-//                ->where('disabled', false)
-//                ->orderBy('created_at', 'DESC')
-//                ->limit(12)
-//                ->get();
-//        
-//        return view('front.index.index', [
-//            'latestPosts' => $latestPost,
-//        ]); 
-//    }
+    private function getLatestPosts() {
+        $latestPost = Post::query()
+                ->where('disabled', false)
+                ->orderBy('created_at', 'DESC')
+                ->limit(12)
+                ->get();
+        
+        return $latestPost; 
+    }
 }
 
             
