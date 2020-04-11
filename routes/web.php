@@ -58,6 +58,8 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::get('new', 'PostController@idnexNew')->name('home.posts.new');
         Route::post('new', 'PostController@addPost')->name('home.posts.new.submit');
         Route::get('delete/{post}', 'PostController@deletePost')->name('home.posts.delete');
+        Route::get('edit/{post}', 'PostController@openEditPost')->name('home.posts.update');
+        Route::post('edit/{post}', 'PostController@updatePost')->name('home.posts.update.submit');
 
     });
 });

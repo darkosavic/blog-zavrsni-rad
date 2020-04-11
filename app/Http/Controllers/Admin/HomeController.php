@@ -24,7 +24,7 @@ class HomeController extends Controller {
      */
     public function index() {
         $allPosts = Post::query()
-                ->orderBy('created_at', 'DESC')
+                ->orderBy('updated_at', 'DESC')
                 ->get();
         return view('admin.home', [
             'allPosts' => $allPosts
