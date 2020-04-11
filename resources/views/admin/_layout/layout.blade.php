@@ -16,6 +16,7 @@
 
         <!-- Custom styles for this template -->
         <link href="dashboard.css" rel="stylesheet">
+        @yield('head_scripts')
     </head>
 
     <body>

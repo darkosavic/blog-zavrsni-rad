@@ -1,6 +1,8 @@
 @extends('front._layout.layout')
 
-
+@section('head_scripts')
+    {!! htmlScriptTagJsApi(['lang' => 'en']) !!}
+@endsection
 @section('content')
 
 <!-- Hero Section -->

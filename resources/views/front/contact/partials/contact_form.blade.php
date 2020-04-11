@@ -34,7 +34,16 @@
                     @include('front._layout.partials.form_errors', ['fieldName' => 'your_message'])
                 </div>
                 <div class="form-group col-md-12">
+                    <div class="form-control @if($errors->has('g-recaptcha-response')) is-invalid @endif">
+                        <title>reCAPTCHA demo: Simple page</title>
+                        {!! htmlFormSnippet() !!}
+                        <br />
+                    </div>
+                    @include('front._layout.partials.form_errors', ['fieldName' => 'g-recaptcha-response'])
+                </div>
+                <div class="form-group col-md-12">
                     <button type="submit" class="btn btn-secondary">Submit Your Message</button>
+
                 </div>
             </div>
         </form>

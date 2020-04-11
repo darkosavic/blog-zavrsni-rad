@@ -34,8 +34,8 @@
         <link rel="stylesheet" href="/themes/front/plugins/owl-carousel2/assets/owl.theme.default.min.css" id="theme-stylesheet">
     </head>
     <body>
-        
-            
+
+
         @include('front._layout.navigation')    
 
         @yield('content')
@@ -50,6 +50,7 @@
         <script src="/themes/front/js/front.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
         <script src="/themes/front/js/form-validation.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
         <script src="/themes/front/plugins/owl-carousel2/owl.carousel.min.js"></script>
@@ -68,7 +69,7 @@
                 "autoplayHoverPause": true
             });
         </script>
-        
+
         @stack('footer_javascript')
 
     </body>
