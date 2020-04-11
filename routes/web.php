@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//FRONT
 Route::get('/', 'IndexController@index')->name('front.index.index');
+//Route::get('/latest-posts', 'IndexController@latestPostsIndex')->name('front.index.latest_posts');
 Route::get('/newest-posts', 'IndexController@getNewestPosts')->name('front.footer.newest_posts');
+
 
 Route::get('/blog', 'BlogController@index')->name('front.blog.index');
 Route::get('/contact', 'ContactController@contactUs')->name('front.contact.contact');
@@ -26,11 +28,11 @@ Route::get('/users/{user}', 'BlogController@singleUser')->name('front.blog.singl
 Route::get('/single-post/{post}', 'BlogController@singlePost')->name('front.blog.post');
 Route::post('/search', 'BlogController@search')->name('front.blog.search');
 
+//AUTH
+Auth::routes(); //registracija ruta: /login, /password/reset ...
 
-//Route::get('/contact-us', 'ContactController@index')->name('front.contact.index');
-//Route::post('/contact/send-message', 'ContactController@sendMessage')->name('front.contact.send_message');
-Auth::routes();
 
+//ADMIN
 Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function () {
     
     Route::get('/dashboard', 'HomeController@index')->name('home');
@@ -42,7 +44,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::post('/', 'TagController@addTag')->name('home.tags.add');
         Route::get('/{tag}', 'TagController@deleteTag')->name('home.tags.delete');
         Route::post('/{tag}', 'TagController@updateTag')->name('home.tags.update');
-        });
+    });
     
     Route::prefix('/categories')->group(function () { 
         
@@ -50,12 +52,13 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::post('/', 'CategoryController@addCategory')->name('home.categories.add');
         Route::get('/{category}', 'CategoryController@deleteCategory')->name('home.categories.delete');
         Route::post('/{category}', 'CategoryController@updateCategory')->name('home.categories.update');
-        });
+    });
 
-
-    Route::get('/admin/posts/important/{post}', 'PostController@setImportant')->name('home.posts.important');
-    Route::get('/admin/posts/able-disable/{post}', 'PostController@ableDisable')->name('home.posts.ableDisable');
-    
+    Route::prefix('/posts')->group(function () { 
+        
+        Route::get('/important/{post}', 'PostController@setImportant')->name('home.posts.important');
+        Route::get('/able-disable/{post}', 'PostController@ableDisable')->name('home.posts.ableDisable');
+    });
 
 
 });

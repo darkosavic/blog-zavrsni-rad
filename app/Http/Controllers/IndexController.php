@@ -37,6 +37,19 @@ class IndexController extends Controller
             'newestPosts' => $newestPosts,
         ]);
     }
+    
+//    public function latestPostsIndex() {
+//        
+//        $latestPost = Post::query()
+//                ->where('disabled', false)
+//                ->orderBy('created_at', 'DESC')
+//                ->limit(12)
+//                ->get();
+//        
+//        return view('front.index.index', [
+//            'latestPosts' => $latestPost,
+//        ]); 
+//    }
 }
 
             

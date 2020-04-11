@@ -71,9 +71,10 @@
 </section>
 <!-- Latest Posts -->
 
-<!-- Gallery Section-->
-<section class="gallery no-padding">   
+ Gallery Section
+    <section class="gallery no-padding">
     <div class="row">
+        
 
         @foreach($allGaleryImages as $galeryImage)
         @include('front.index.single_galery_image', [
