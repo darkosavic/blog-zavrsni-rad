@@ -57,6 +57,15 @@ class PostController extends Controller
         return redirect()->route('home');
     }
     
+    public function deletePost(Post $post) {
+        $post->delete();
+        \DB::table('tag_post')
+                ->where('post_id', '=', $post->id)
+                ->delete();
+        
+        return redirect()->route('home');
+    }
+    
     private function getCategories() {
         return Category::query()
                         ->orderBy('name', 'ASC')

@@ -57,5 +57,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::get('/able-disable/{post}', 'PostController@ableDisable')->name('home.posts.ableDisable');
         Route::get('new', 'PostController@idnexNew')->name('home.posts.new');
         Route::post('new', 'PostController@addPost')->name('home.posts.new.submit');
+        Route::get('delete/{post}', 'PostController@deletePost')->name('home.posts.delete');
+
     });
 });
