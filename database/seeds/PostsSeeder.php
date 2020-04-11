@@ -15,13 +15,13 @@ class PostsSeeder extends Seeder {
         $categoryIds = App\Models\Category::all()->pluck("id")->toArray();
         $userIds = App\User::all()->pluck("id")->toArray();
 
-        $faker = \Faker\Factory::create('en_GB');
+        $faker = \Faker\Factory::create('en_US');
 
         for ($x = 0; $x <= 10; $x++) {
             \DB::table('posts')->insert([
-                'title' => $faker->text(30),
-                'preview' => $faker->text(400),
-                'body' => $faker->text(1500),
+                'title' => $faker->realText(30),
+                'preview' => $faker->realText(400),
+                'body' => $faker->realText(1500),
                 'imageUrl' => "/themes/front/img/blog-post-3.jpeg",
                 'numberOfViews' => 10,
                 'category_id' => $faker->randomElement($categoryIds),

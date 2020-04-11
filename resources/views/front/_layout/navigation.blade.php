@@ -29,6 +29,8 @@
                     </li>
                     <li class="nav-item" ><a href="{{route('front.contact.contact')}}" class="nav-link ">Contact</a>
                     </li>
+                    <li  class=" mb-2 bg-info" ><a href="{{route('home')}}" class="nav-link text-white">Login</a>
+                    </li>
                 </ul>
                 <div class="navbar-text"><a href="" class="search-btn"><i class="icon-search-1"></i></a></div>
             </div>
