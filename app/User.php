@@ -6,8 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
+
     use Notifiable;
 
     /**
@@ -36,19 +36,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function posts() {
         return $this->hasMany(Models\Post::class, 'user_id', 'id');
     }
-    
+
     public function getAvatar() {
-        return '/themes/front/img/avatar-1.jpg';
+        if ($this->photo) {
+            return '/storage/users/' . $this->photo;
+        }
+
+        return '/themes/admin/dist/img/default-150x150.png';
     }
-    
+
     public function getSingleUserUrl() {
         return route('front.blog.single-user', [
             'user' => $this->id,
             'seoSlug' => \Str::slug($this->name),
         ]);
     }
+
+    public function deletePhoto() {
+        if (!$this->photo) {
+            return $this;
+        }
+
+        $photoPath = public_path('/storage/users/' . $this->photo);
+
+        if (is_file($photoPath)) {
+            unlink($photoPath);
+        }
+
+        return $this;
+    }
+
 }

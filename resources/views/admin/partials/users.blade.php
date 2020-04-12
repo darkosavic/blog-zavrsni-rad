@@ -7,6 +7,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+{{$errors}}
 <div class="container">
     <div class="row">
 
@@ -51,7 +52,7 @@
                 </section>
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <img src="{{ Auth::user()->getAvatar() }}" class="mh-100" alt="Responsive image">
+                        <img src="{{ Auth::user()->getAvatar() }}" class="mh-100" alt="Responsive image" style="max-width: 150px;">
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>{{ Auth::user()->name }}</h4>
@@ -62,24 +63,24 @@
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>{{ Auth::user()->created_at }}</p>
                         <p >
-                                    <a class="btn btn-primary w-100 p-3"
-                                       data-toggle="collapse"
-                                       href="#add-user-form"
-                                       role="button"
-                                       aria-expanded="false"
-                                       aria-controls="add-user-form"
-                                       >Add new</a>
-                            
-                                </p>
-                                <p >
-                                    <a class="btn btn-primary w-100 p-3"
-                                       data-toggle="collapse"
-                                       href="#edit-user-form"
-                                       role="button"
-                                       aria-expanded="false"
-                                       aria-controls="edit-user-form"
-                                       >Edit profile</a>
-                                </p>
+                            <a class="btn btn-primary w-100 p-3"
+                               data-toggle="collapse"
+                               href="#add-user-form"
+                               role="button"
+                               aria-expanded="false"
+                               aria-controls="add-user-form"
+                               >Add new</a>
+
+                        </p>
+                        <p >
+                            <a class="btn btn-primary w-100 p-3"
+                               data-toggle="collapse"
+                               href="#edit-user-form"
+                               role="button"
+                               aria-expanded="false"
+                               aria-controls="edit-user-form"
+                               >Edit profile</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -87,10 +88,10 @@
             <!--End Your Profile-->
         </div>
         <div class="col-sm-6 col-md-6">
-           <!--add user--> 
+            <!--add user--> 
             <div class="collapse multi-collapse" id="add-user-form">
                 <div class="card card-body">
-                    <form action="{{route('home.users.add')}}" method="post">
+                    <form action="{{route('home.users.add')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="user_name">User name</label>
@@ -126,15 +127,23 @@
                                 id="user_phone"
                                 name="phone_number">
                         </div>
+                        <div class="form-group">
+                            <label for="upload_image">Upload profile picture</label>
+                            <input 
+                                type="file"
+                                class="form-control-file"
+                                name="photo"
+                                id="photo">
+                        </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
-            
-           <!--edit user-->
+
+            <!--edit user-->
             <div class="collapse multi-collapse" id="edit-user-form">
                 <div class="card card-body">
-                    <form action="{{route('home.users.edit')}}" method="post">
+                    <form action="{{route('home.users.edit')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="user_name">User name</label>
@@ -170,6 +179,14 @@
                                 id="user_phone"
                                 name="phone_number"
                                 value="{{Auth::user()->phone_number}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="upload_image">Upload profile picture</label>
+                            <input 
+                                type="file"
+                                class="form-control-file"
+                                name="photo"
+                                id="photo">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
