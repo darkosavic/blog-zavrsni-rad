@@ -5,7 +5,7 @@
 {{$errors}}
 <form action="{{route('home.posts.update.submit', [
       'post' => $post
-      ])}}" method="post" >
+      ])}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="title">Title</label>
@@ -28,6 +28,14 @@
             maxlength="500">
             {{$post->preview}}
         </textarea>
+    </div>
+    <div class="form-group">
+        <label for="upload_image">Upload featuring picture</label>
+        <input 
+            type="file"
+            class="form-control-file"
+            name="photo"
+            id="photo">
     </div>
     <div class="form-group">
         <label for="body">Body</label>

@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model {
 
     protected $table = "posts";
-    
     protected $fillable = [
         'user_id', 'category_id', 'title', 'body',
         'imageUrl', 'important', 'disabled', 'preview'
@@ -87,6 +86,54 @@ class Post extends Model {
         return route('front.comment.sendComment', [
             'post' => $this->id
         ]);
+    }
+
+    public function getPhotoUrl() {
+        if ($this->photo1) {
+            return '/storage/posts/' . $this->imageUrl;
+        }
+
+        return '/themes/front/img/blog-post-3.jpeg';
+    }
+
+    public function getPhotoThumbUrl() {
+        //originalna slika: /storage/products/11_photo1_blabla.png - 600x800
+        //thumb slika		: /storage/products/thumbs/11_photo1_blabla.png  - 300 x 300
+
+        if ($this->imageUrl) {
+            return '/storage/posts/thumbs/' . $this->imageUrl;
+        }
+
+        return '/themes/front/img/small-thumbnail-1.jpg';
+    }
+
+    public function deletePhoto() {
+        if (!$this->imageUrl) {
+            return $this; //fluent interface
+        }
+
+        $photoFilePath = public_path('/storage/products/' . $this->imageUrl);
+
+        if (!is_file($photoFilePath)) {
+            //informacija o fajlu postoji u bazi
+            //ali fajl e postoji fizicki na Hard Disku
+            return $this;
+        }
+
+        unlink($photoFilePath);
+
+        //brisanje thumb verzije
+
+        $photoThumbPath = public_path('/storage/products/thumbs/' . $this->imageUrl);
+
+        if (!is_file($photoThumbPath)) {
+            //thumb slika ne postoji na disku
+            return $this;
+        }
+
+        unlink($photoThumbPath);
+
+        return $this;
     }
 
 }

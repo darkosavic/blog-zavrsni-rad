@@ -43,6 +43,7 @@ class PostController extends Controller {
         $post->user_id = \Illuminate\Support\Facades\Auth::user()->id;
         $post->imageUrl = "/themes/front/img/blog-post-3.jpeg";
         $post->save();
+        $this->handlePhotoUpload($request, $post);
 
         $post->tags()->sync($formData['tag_id']);
 
@@ -54,7 +55,8 @@ class PostController extends Controller {
 
         $post->fill($formData);
         $post->save();
-
+        $this->handlePhotoUpload($request, $post);
+        
         $post->tags()->sync($formData['tag_id']);
 
         return redirect()->route('home');
@@ -98,8 +100,37 @@ class PostController extends Controller {
                     'important' => ['nullable', 'boolean'],
                     'disabled' => ['nullable', 'boolean'],
                     'category_id' => ['required', 'numeric', 'exists:categories,id'],
-                    'tag_id' => ['required', 'array', 'exists:tags,id']
+                    'tag_id' => ['required', 'array', 'exists:tags,id'],
+                    'photo' => ['required', 'file', 'image']
         ]);
+    }
+
+    protected function handlePhotoUpload(Request $request, Post $post) {
+        if ($request->hasFile('photo')) {
+
+            $post->deletePhoto();
+
+            $photoFile = $request->file('photo');
+
+            $newPhotoFileName = $post->id . '_' . $photoFile->getClientOriginalName();
+
+            $photoFile->move(
+                    public_path('/storage/posts/'), $newPhotoFileName
+            );
+
+            $post->imageUrl = $newPhotoFileName;
+
+            $post->save();
+
+            //originalna slika
+            \Image::make(public_path('/storage/posts/' . $post->imageUrl))
+                    ->save();
+
+            //thumb slika
+            \Image::make(public_path('/storage/posts/' . $post->imageUrl))
+                    ->fit(256, 256)
+                    ->save(public_path('/storage/posts/thumbs/' . $post->imageUrl));
+        }
     }
 
 }

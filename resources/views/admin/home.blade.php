@@ -10,46 +10,70 @@
 
 @foreach($allPosts as $post)
 <div class="card" style="width: 100%; margin-bottom: 20px">
-    <img class="card-img-top" src="..." alt="Card image cap">
     <div class="card-header">
         <h5 class="card-title">{{$post->title}}</h5>
 
     </div>
     <div class="card-body">
         <div class="row" style="margin-bottom: 10px">
-            <div class="col-md-3">
-                <p class="card-text">CATEGORY: 
-                    <strong>{{$post->category->name}}</strong>
-                </p>
+            <div class="col-md-4">
+                <img src="{{$post->getPhotoThumbUrl()}}" alt="Card image cap" style="max-width: 256px">
             </div>
-            <div class="col-md-2">
-                <p class="card-text">DISABLED: 
-                    <strong>
-                        @if($post->disabled)
-                        YES
-                        @else
-                        NO
-                        @endif
-                    </strong></p>
-            </div>
-            <div class="col-md-2">
-                <p class="card-text">IMPORTANT: 
-                    <strong>
-                        @if($post->important)
-                        YES
-                        @else
-                        NO
-                        @endif
-                    </strong></p>
-            </div>
-            <div class="col-md-5">
-                <p class="card-text">TAGS:
-                    <strong>
-                        @foreach($post->tags as $tag)
-                        <span>#{{$tag->name}} </span>
-                        @endforeach
-                    </strong>
-                </p>
+            <div class="col-md-8">
+                <div class="row">
+                    <p class="card-text">CATEGORY: 
+                        <strong>{{$post->category->name}}</strong>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="card-text">DISABLED: 
+                        <strong>
+                            @if($post->disabled)
+                            YES
+                            @else
+                            NO
+                            @endif
+                        </strong></p>
+                </div>
+                <div class="row">
+                    <p class="card-text">IMPORTANT: 
+                        <strong>
+                            @if($post->important)
+                            YES
+                            @else
+                            NO
+                            @endif
+                        </strong></p>
+                </div>
+                <div class="row">
+                    <p class="card-text">TAGS:
+                        <strong>
+                            @foreach($post->tags as $tag)
+                            <span>#{{$tag->name}} </span>
+                            @endforeach
+                        </strong>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="card-text">Number of views: 
+                        <strong>{{$post->numberOfViews}}</strong>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="card-text">Author: 
+                        <strong>{{$post->user->name}}</strong>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="card-text">Created at: 
+                        <strong>{{$post->displayDateWithPipe()}}</strong>
+                    </p>
+                </div>
+                <div class="row">
+                    <p class="card-text">Number of comments: 
+                        <strong>{{count($post->comments)}}</strong>
+                    </p>
+                </div>
             </div>
         </div>
 
