@@ -23,7 +23,7 @@
             @include('front.blog.partials.main_part', [
             'posts' => $posts
             ])
-            
+
         </main>
         <aside class="col-lg-4">
             <!-- Widget [Search Bar Widget]-->

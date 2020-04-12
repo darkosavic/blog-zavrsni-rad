@@ -17,7 +17,8 @@ class Category extends Model {
 
     public function getFrontUrl() {
         return route('front.blog.single-category', [
-            'category' => $this->id
+            'category' => $this->id,
+            'seoSlug' => \Str::slug($this->name),
         ]);
     }
     
@@ -29,7 +30,7 @@ class Category extends Model {
     
     public function getUpdateUrl() {
         return route('home.categories.update', [
-            'category' => $this->id
+            'category' => $this->id,
         ]);
     }
 }

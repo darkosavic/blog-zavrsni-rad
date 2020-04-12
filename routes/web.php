@@ -21,9 +21,9 @@ Route::post('/contact/send-message', 'ContactController@sendMessage')->name('fro
 
 Route::post('/comment/send-comment/{post}', 'CommentsController@sendComment')->name('front.comment.sendComment');
 
-Route::get('/categories/{category}', 'BlogController@singleCategory')->name('front.blog.single-category');
-Route::get('/tags/{tag}', 'BlogController@singleTag')->name('front.blog.single-tag');
-Route::get('/users/{user}', 'BlogController@singleUser')->name('front.blog.single-user');
+Route::get('/categories/{category}/{seoSlug?}', 'BlogController@singleCategory')->name('front.blog.single-category');
+Route::get('/tags/{tag}/{seoSlug?}', 'BlogController@singleTag')->name('front.blog.single-tag');
+Route::get('/users/{user}/{seoSlug?}', 'BlogController@singleUser')->name('front.blog.single-user');
 Route::get('/single-post/{post}/{seoSlug?}', 'BlogController@singlePost')->name('front.blog.post');
 Route::post('/search', 'BlogController@search')->name('front.blog.search');
 

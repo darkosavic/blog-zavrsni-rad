@@ -47,7 +47,8 @@ class User extends Authenticatable
     
     public function getSingleUserUrl() {
         return route('front.blog.single-user', [
-            'user' => $this->id
+            'user' => $this->id,
+            'seoSlug' => \Str::slug($this->name),
         ]);
     }
 }

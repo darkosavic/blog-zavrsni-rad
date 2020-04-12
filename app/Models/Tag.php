@@ -20,7 +20,8 @@ class Tag extends Model
     
     public function getFrontUrl() {
         return route('front.blog.single-tag', [
-            'tag' => $this->id
+            'tag' => $this->id,
+            'seoSlug' => \Str::slug($this->name),
         ]);
     }
     

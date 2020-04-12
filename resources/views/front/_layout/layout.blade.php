@@ -14,7 +14,8 @@
         <meta property="og:descrption" content="@yield('seo_description', __('The most current topics'))" />
         <meta property="og:image" content="@yield('seo_image', '/themes/front/img/logo.png')" />
         <meta property="og:url" content="{{url()->current()}}" />
-        
+        @yield('tag_meta')
+        @yield('category_meta')
         <!--TWITTER META-->
         <meta name="twitter:card" content="{{config('app.name')}}" />
         <meta name="twitter:title" content="@yield('seo_title', 'Bootstrap Blog - B4 Template by Bootstrap Temple') | Blog" />
@@ -23,6 +24,9 @@
         
         
         @yield('head_meta')
+        
+        
+        
         <!--END SEO SECTION-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">

@@ -2,12 +2,12 @@
 
 @section('seo_title', 'Blog Post')
 @section('seo_og_type', 'post')
-@section('content')
 
 @section('head_meta')
 <meta property="book:author" content="{{$post->user->name}}" />
 <meta property="og:type" content="@yield('seo_og_type', 'article')" />
 @endsection
+@section('content')
 <div class="container">
     <div class="row">
         <!-- Latest Posts -->
@@ -89,7 +89,7 @@
             <!-- Widget [Tags Cloud Widget] -->  
             @include('front.blog.partials.tags_widget', [
             'tags' => $tags
-            ])
+            ])           
         </aside>
     </div>
 </div>
@@ -120,3 +120,8 @@
 
 </script>
 @endpush
+
+
+@section('tag_meta')
+<meta property="og:title" content="{{$tag->name}}" />
+@endsection

@@ -26,11 +26,14 @@ class BlogController extends Controller {
         ]);
     }
 
-    public function singleCategory(Category $category) {
+    public function singleCategory(Category $category, $seoSlug = null) {
         $posts = Category::find($category->id)
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
+        if ($seoSlug != \Str::slug($category->name)){
+            return redirect()->away($category->getFrontUrl());
+        }
 
         return view('front.blog.index', [
             "main_title" => "Category " . $category->name,
@@ -41,11 +44,15 @@ class BlogController extends Controller {
         ]);
     }
 
-    public function singleTag(Tag $tag) {
+    public function singleTag(Tag $tag, $seoSlug = null) {
         $posts = Tag::find($tag->id)
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
+        
+        if ($seoSlug != \Str::slug($tag->name)){
+            return redirect()->away($tag->getFrontUrl());
+        }
 
         return view('front.blog.index', [
             "main_title" => "Tag \"" . $tag->name . "\"",
@@ -72,11 +79,15 @@ class BlogController extends Controller {
         ]);
     }
 
-    public function singleUser(User $user) {
+    public function singleUser(User $user, $seoSlug = null) {
         $posts = User::find($user->id)
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
+        
+        if ($seoSlug != \Str::slug($user->name)){
+            return redirect()->away($user->getSingleUserUrl());
+        }
 
         return view('front.blog.index', [
             "author_page_title" => "Posts by user " . $user->name,

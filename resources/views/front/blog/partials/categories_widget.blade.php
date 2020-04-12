@@ -5,7 +5,7 @@
     @foreach($categories as $category)
     <div class="item d-flex justify-content-between">
         <a href="{{$category->getFrontUrl()}}">{{$category->name}}</a>
-        <span>{{count($category->posts)}}</span>
+    <span>{{count($category->posts)}}</span> 
     </div>
     @endforeach
 </div>
