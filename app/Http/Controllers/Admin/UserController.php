@@ -15,9 +15,28 @@ class UserController extends Controller
     
     public function index() {
         $user = User::query()
+                ->where('id', '!=', \Illuminate\Support\Facades\Auth::user()->id)
                 ->get();
         return view('admin.partials.users', [
 		'users' => $user	
         ]);
+    }
+    
+    public function addUser(Request $request) {
+        $formData = $request->validate([
+                    'name' => ['required', 'string', 'max:100'],
+                    'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+                    'phone_number' => ['required', 'string']
+        ]);
+        
+        $formData['password'] = \Hash::make($request['password']);
+        
+        $user = new User();
+        $user->fill($formData);
+        $user->save();
+        
+        session()->flash('system_message', __('New user has been saved!'));
+        
+        return redirect()->route('home.users');
     }
 }

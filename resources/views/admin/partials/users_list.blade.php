@@ -1,5 +1,5 @@
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" style="margin-top: 20px">
     <div class="wrapper">
  <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -52,14 +52,8 @@
                                                 <td class="text-center">{{$user->created_at}}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group">
-                                                        <a href="#" class="btn btn-info">
-                                                            <i class="fas fa-edit"></i>
-                                                        </a>
-                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#disable-modal">
-                                                            <i class="fas fa-minus-circle"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#delete-modal">
-                                                            <i class="fas fa-trash"></i>
+                                                        <button type="button" class="btn btn-info" data-toggle="modal">
+                                                            Ban user
                                                         </button>
                                                     </div>
                                                 </td>

@@ -20,6 +20,15 @@
                                 <h1>Your profile</h1>
                             </div>
                             <div class="col-sm-6 w-100 p-3">
+<!--                                <p >
+                                    <a class="btn btn-primary w-100 p-3"
+                                       data-toggle="collapse"
+                                       href="#multiCollapseExample1"
+                                       role="button"
+                                       aria-expanded="false"
+                                       aria-controls="multiCollapseExample1"
+                                       >Add new</a>
+                                </p>
                                 <p >
                                     <a class="btn btn-primary w-100 p-3"
                                        data-toggle="collapse"
@@ -27,8 +36,8 @@
                                        role="button"
                                        aria-expanded="false"
                                        aria-controls="multiCollapseExample1"
-                                       >Add new user</a>
-                                </p>
+                                       >Edit profile</a>
+                                </p>-->
                             </div>
 
                             @if(session()->has('error'))
@@ -52,22 +61,25 @@
                             <i class="glyphicon glyphicon-globe"></i>{{ Auth::user()->phone_number }}
                             <br />
                             <i class="glyphicon glyphicon-gift"></i>{{ Auth::user()->created_at }}</p>
-                        <!-- Split button -->
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-primary">
-                                Social</button>
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                <span class="caret"></span><span class="sr-only">Social</span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Twitter</a></li>
-                                <li><a href="https://plus.google.com/+Jquery2dotnet/posts">Google +</a></li>
-                                <li><a href="https://www.facebook.com/jquery2dotnet">Facebook</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Github</a></li>
-                            </ul>
-
-                        </div>
+                        <p >
+                                    <a class="btn btn-primary w-100 p-3"
+                                       data-toggle="collapse"
+                                       href="#add-user-form"
+                                       role="button"
+                                       aria-expanded="false"
+                                       aria-controls="add-user-form"
+                                       >Add new</a>
+                            
+                                </p>
+                                <p >
+                                    <a class="btn btn-primary w-100 p-3"
+                                       data-toggle="collapse"
+                                       href="#multiCollapseExample1"
+                                       role="button"
+                                       aria-expanded="false"
+                                       aria-controls="multiCollapseExample1"
+                                       >Edit profile</a>
+                                </p>
                     </div>
                 </div>
             </div>
@@ -75,45 +87,43 @@
             <!--End Your Profile-->
         </div>
         <div class="col-sm-6 col-md-6">
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="collapse multi-collapse" id="add-user-form">
                 <div class="card card-body">
-                    <form action="#" method="post">
+                    <form action="{{route('home.users.add')}}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1">User name</label>
+                            <label for="user_name">User name</label>
                             <input 
                                 type="text" 
                                 class="form-control"
-                                id="exampleInputEmail1"
-                                name="tag_name"
-                                placeholder="Enter tag name">
+                                id="user_name"
+                                name="name"
+                                placeholder="Enter user name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
+                            <label for="user_email">Email address</label>
                             <input 
-                                type="text" 
+                                type="email" 
                                 class="form-control"
-                                id="exampleInputEmail1"
-                                name="tag_name"
-                                placeholder="Enter tag name">
+                                id="user_email"
+                                name="email"
+                                placeholder="example@any.com">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Password</label>
+                            <label for="user_password">Password</label>
                             <input 
-                                type="text" 
+                                type="password" 
                                 class="form-control"
-                                id="exampleInputEmail1"
-                                name="tag_name"
-                                placeholder="Enter tag name">
+                                id="user_password"
+                                name="password">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Phone number</label>
+                            <label for="user_phone">Phone number</label>
                             <input 
-                                type="text" 
+                                type="number" 
                                 class="form-control"
-                                id="exampleInputEmail1"
-                                name="tag_name"
-                                placeholder="Enter tag name">
+                                id="user_phone"
+                                name="phone_number">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
