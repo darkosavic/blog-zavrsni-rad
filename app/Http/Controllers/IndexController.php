@@ -41,7 +41,7 @@ class IndexController extends Controller
         $latestPost = Post::query()
                 ->where('disabled', false)
                 ->orderBy('created_at', 'DESC')
-                ->limit(12)
+                ->limit(3)
                 ->get();
         
         return $latestPost; 
