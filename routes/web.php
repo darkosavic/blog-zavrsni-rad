@@ -65,6 +65,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
     Route::prefix('/users')->group(function () {
 
         Route::get('/', 'UserController@index')->name('home.users');
-        Route::post('/', 'UserController@addUser')->name('home.users.add');
+        Route::post('/insert', 'UserController@addUser')->name('home.users.add');
+        Route::post('/update', 'UserController@updateUser')->name('home.users.edit');
     });
 });

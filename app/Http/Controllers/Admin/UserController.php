@@ -39,4 +39,22 @@ class UserController extends Controller
         
         return redirect()->route('home.users');
     }
+    
+    public function updateUser(Request $request) {
+        $formData = $request->validate([
+                    'name' => ['required', 'string', 'max:100'],
+                    'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+                    'phone_number' => ['required', 'string']
+        ]);
+        
+        $formData['password'] = \Hash::make($request['password']);
+        
+        $user = \Illuminate\Support\Facades\Auth::user();
+        $user->fill($formData);
+        $user->save();
+        
+        session()->flash('system_message', __('User has been succesfully edited!'));
+        
+        return redirect()->route('home.users');
+    }
 }

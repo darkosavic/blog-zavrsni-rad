@@ -74,10 +74,10 @@
                                 <p >
                                     <a class="btn btn-primary w-100 p-3"
                                        data-toggle="collapse"
-                                       href="#multiCollapseExample1"
+                                       href="#edit-user-form"
                                        role="button"
                                        aria-expanded="false"
-                                       aria-controls="multiCollapseExample1"
+                                       aria-controls="edit-user-form"
                                        >Edit profile</a>
                                 </p>
                     </div>
@@ -87,6 +87,7 @@
             <!--End Your Profile-->
         </div>
         <div class="col-sm-6 col-md-6">
+           <!--add user--> 
             <div class="collapse multi-collapse" id="add-user-form">
                 <div class="card card-body">
                     <form action="{{route('home.users.add')}}" method="post">
@@ -120,10 +121,55 @@
                         <div class="form-group">
                             <label for="user_phone">Phone number</label>
                             <input 
-                                type="number" 
+                                type="text" 
                                 class="form-control"
                                 id="user_phone"
                                 name="phone_number">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            
+           <!--edit user-->
+            <div class="collapse multi-collapse" id="edit-user-form">
+                <div class="card card-body">
+                    <form action="{{route('home.users.edit')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="user_name">User name</label>
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                id="user_name"
+                                name="name"
+                                value="{{Auth::user()->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_email">Email address</label>
+                            <input 
+                                type="email" 
+                                class="form-control"
+                                id="user_email"
+                                name="email"
+                                value="{{Auth::user()->email}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_password">New Password</label>
+                            <input 
+                                type="password" 
+                                class="form-control"
+                                id="user_password"
+                                name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_phone">Phone number</label>
+                            <input 
+                                type="text" 
+                                class="form-control"
+                                id="user_phone"
+                                name="phone_number"
+                                value="{{Auth::user()->phone_number}}">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
