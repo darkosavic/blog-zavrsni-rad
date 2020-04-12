@@ -1,5 +1,6 @@
 @extends('admin._layout.layout')
 
+@section('seo_title', 'Categories')
 @section('content')
 <p>
     <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Add new category</a>

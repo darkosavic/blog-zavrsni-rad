@@ -1,5 +1,8 @@
 @extends('front._layout.layout')
 
+@section('seo_title', 'Blog Page')
+@section('seo_description', )
+
 @section('content')
 
 <div class="container">
@@ -20,6 +23,7 @@
             @include('front.blog.partials.main_part', [
             'posts' => $posts
             ])
+            
         </main>
         <aside class="col-lg-4">
             <!-- Widget [Search Bar Widget]-->

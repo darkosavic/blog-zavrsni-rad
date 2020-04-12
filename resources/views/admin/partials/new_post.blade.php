@@ -1,6 +1,6 @@
 @extends('admin._layout.layout')
 
-@section('content')
+@section('content' New Post)
 {{$errors}}
 <form action="{{route('home.posts.new.submit')}}" method="post" >
     @csrf

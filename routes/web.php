@@ -24,7 +24,7 @@ Route::post('/comment/send-comment/{post}', 'CommentsController@sendComment')->n
 Route::get('/categories/{category}', 'BlogController@singleCategory')->name('front.blog.single-category');
 Route::get('/tags/{tag}', 'BlogController@singleTag')->name('front.blog.single-tag');
 Route::get('/users/{user}', 'BlogController@singleUser')->name('front.blog.single-user');
-Route::get('/single-post/{post}', 'BlogController@singlePost')->name('front.blog.post');
+Route::get('/single-post/{post}/{seoSlug?}', 'BlogController@singlePost')->name('front.blog.post');
 Route::post('/search', 'BlogController@search')->name('front.blog.search');
 
 //AUTH
@@ -61,5 +61,10 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::get('edit/{post}', 'PostController@openEditPost')->name('home.posts.update');
         Route::post('edit/{post}', 'PostController@updatePost')->name('home.posts.update.submit');
 
+    });
+    
+    Route::prefix('/users')->group(function () {
+        
+        Route::get('/', 'UserController@index')->name('home.users'); 
     });
 });

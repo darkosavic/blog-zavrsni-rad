@@ -1,5 +1,6 @@
 @extends('admin._layout.layout')
 
+@section('seo_title', 'Edit Post')
 @section('content')
 {{$errors}}
 <form action="{{route('home.posts.update.submit', [

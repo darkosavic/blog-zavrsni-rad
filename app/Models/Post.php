@@ -78,7 +78,8 @@ class Post extends Model {
 
     public function getPostUrl() {
         return route('front.blog.post', [
-            'post' => $this->id
+            'post' => $this->id,
+            'seoSlug' => \Str::slug($this->title),
         ]);
     }
 

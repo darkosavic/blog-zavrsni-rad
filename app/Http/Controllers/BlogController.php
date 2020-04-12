@@ -88,9 +88,12 @@ class BlogController extends Controller {
         ]);
     }
 
-    public function singlePost(Post $post) {
+    public function singlePost(Post $post, $seoSlug = null) {
         if (!Auth::check() && $post->disabled) {
             return abort(404);
+        }
+        if ($seoSlug != \Str::slug($post->title)){
+            return redirect()->away($post->getPostUrl());
         }
         
         $this->incrementNumberOfViews($post);

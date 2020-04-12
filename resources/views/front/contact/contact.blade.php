@@ -1,5 +1,7 @@
 @extends('front._layout.layout')
 
+@section('seo_title', 'Contact Us')
+@section('seo_description', "Have an interesting news or idea? Don't hesitate to contact us!")
 @section('head_scripts')
     {!! htmlScriptTagJsApi(['lang' => 'en']) !!}
 @endsection

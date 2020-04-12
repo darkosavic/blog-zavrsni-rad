@@ -1,7 +1,13 @@
 @extends('front._layout.layout')
 
+@section('seo_title', 'Blog Post')
+@section('seo_og_type', 'post')
 @section('content')
 
+@section('head_meta')
+<meta property="book:author" content="{{$post->user->name}}" />
+<meta property="og:type" content="@yield('seo_og_type', 'article')" />
+@endsection
 <div class="container">
     <div class="row">
         <!-- Latest Posts -->
@@ -24,18 +30,8 @@
                             </div>
                         </div>
                         <div class="post-body">
-                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <p> <img src="/themes/front/img/featured-pic-3.jpeg" alt="..." class="img-fluid"></p>
-                            <h3>Lorem Ipsum Dolor</h3>
-                            <p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti accusantium</p>
-                            <blockquote class="blockquote">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                <footer class="blockquote-footer">Someone famous in
-                                    <cite title="Source Title">Source Title</cite>
-                                </footer>
-                            </blockquote>
-                            <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
+                            <p class="lead">{{$post->preview}}</p>
+                            <div id="post-body">{!!$post->body!!} </div>
                         </div>
                         <div class="post-tags">
                             @foreach($post->tags as $tag)
@@ -99,3 +95,28 @@
 </div>
 
 @endsection
+
+@push('footer_javascript')
+<script type="text/javascript">
+
+    function refreshComments() {
+
+        // ajax funkcija vraca PROMISE 
+        $.ajax({
+            "url": "{{route('front.footer.newest_posts')}}",
+            "type": "get", //http method GET ili POST
+            "data": {}
+        }).done(function (response) {
+
+            $('#post-comments').html(response);
+            console.log('Zavrseno ucitavanje najnovijih postova');
+            //console.log(response);
+        }).fail(function (jqXHR, textStatus, error) {
+            console.log('Greska prilikom ucitavanja najnovijih postova');
+        });
+    }
+
+    //refreshComments(); 
+
+</script>
+@endpush

@@ -3,8 +3,27 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Bootstrap Blog - B4 Template by Bootstrap Temple</title>
-        <meta name="description" content="">
+        <!--SEO SECTION-->
+        <title>@yield('seo_title', 'Bootstrap Blog - B4 Template by Bootstrap Temple') | Blog</title>
+        <meta name="description" content="@yield('seo_description', __('The most current topics'))">
+
+        <!--OG meta-->
+        <meta property="og:site_name" content="{{config('app.name')}}" />
+        <meta property="og:type" content="@yield('seo_og_type', 'article')" />
+        <meta property="og:title" content="@yield('seo_title', 'Bootstrap Blog - B4 Template by Bootstrap Temple') | Blog" />
+        <meta property="og:descrption" content="@yield('seo_description', __('The most current topics'))" />
+        <meta property="og:image" content="@yield('seo_image', '/themes/front/img/logo.png')" />
+        <meta property="og:url" content="{{url()->current()}}" />
+        
+        <!--TWITTER META-->
+        <meta name="twitter:card" content="{{config('app.name')}}" />
+        <meta name="twitter:title" content="@yield('seo_title', 'Bootstrap Blog - B4 Template by Bootstrap Temple') | Blog" />
+        <meta name="twitter:description" content="@yield('seo_description', __('The most current topics'))" />
+        <meta name="twitter:image" content="@yield('seo_image', '/themes/front/img/logo.png')" />
+        
+        
+        @yield('head_meta')
+        <!--END SEO SECTION-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="all,follow">
         <!-- Bootstrap CSS-->
@@ -51,7 +70,6 @@
         <script src="/themes/front/js/front.js"></script>
         <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
         <script src="/themes/front/js/form-validation.js"></script>
-        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
         <script src="/themes/front/plugins/owl-carousel2/owl.carousel.min.js"></script>

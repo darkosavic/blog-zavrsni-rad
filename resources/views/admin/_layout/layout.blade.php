@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-        <title>Dashboard Template for Bootstrap</title>
+        <title>@yield('seo_title', 'Dashboard Template for Bootstrap') | Blog</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
@@ -16,7 +16,6 @@
 
         <!-- Custom styles for this template -->
         <link href="dashboard.css" rel="stylesheet">
-        @yield('head_scripts')
     </head>
 
     <body>

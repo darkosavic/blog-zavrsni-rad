@@ -1,5 +1,6 @@
 @extends('auth._layout.layout')
 
+@section('seo_title', 'Welcom')
 @section('content')
 
 <p class="login-box-msg">Sign in to start your session</p>

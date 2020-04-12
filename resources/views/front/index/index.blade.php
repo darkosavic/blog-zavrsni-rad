@@ -1,6 +1,8 @@
 @extends('front._layout.layout')
 
-<!--@section('seo_title', 'Index Page')-->
+@section('seo_title', 'Home Page')
+@section('seo_description', 'Welcome to Blog, here you can find out all about the most current topics')
+@section('seo_image', url('/themes/front/img/featured-pic-1.jpeg'))
 
 @section('content')
 <!-- Hero Section-->
@@ -77,13 +79,7 @@
             <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
         </header>
         <div class="owl-carousel" id="latest-posts-slider">
-        @for($i = 0; $i < count($latestPosts); $i+=3)
-        @include('front.index.latest_posts', [
-            'firstPost' => $latestPosts[$i],
-            'secondPost' => $latestPosts[$i+1],
-            'thirdPost' => $latestPosts[$i+2]
-        ])
-        @endfor
+
         </div>
     </div>
 </section>
