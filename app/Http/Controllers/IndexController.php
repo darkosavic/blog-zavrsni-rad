@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\GaleryImages;
 use App\Models\Post;
+use App\Models\IndexSlide;
 
 class IndexController extends Controller
 {
@@ -19,10 +20,15 @@ class IndexController extends Controller
                 ->limit(3)
                 ->get();
         
+        $indexSlides = IndexSlide::query()
+                ->where('disabled', 'false')
+                ->get();
+        
         return view('front.index.index', [
             'allGaleryImages' => $galeryImages,
             'newFeaturedPosts' => $newFetaured,
-            'latestPosts' => $this->getLatestPosts()
+            'latestPosts' => $this->getLatestPosts(),
+            'indexSlides' => $indexSlides
         ]); 
     }
     

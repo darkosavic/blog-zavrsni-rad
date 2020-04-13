@@ -21,7 +21,20 @@
     <body>
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{url('/')}}">Go to Blog</a>
-            <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+            <div class="widget search col-lg-9">
+            <form action="{{route('home.posts.search')}}" class="search-form" method="post">
+                @csrf
+                <div class="row">
+                    <input 
+                        class="col-lg-11 form-control form-control-dark"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                        name="search">
+                    <button type="submit" class="form-control submit image col-lg-1"><span data-feather="search"></span></button>
+                </div>
+            </form>
+            </div>
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
                     <a class="nav-link" href="{{ route('logout') }}"

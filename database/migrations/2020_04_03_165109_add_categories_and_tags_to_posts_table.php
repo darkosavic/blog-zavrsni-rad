@@ -14,7 +14,7 @@ class AddCategoriesAndTagsToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-           $table->bigInteger("category_id");
+           $table->bigInteger("category_id")->nullable();
         });
     }
 

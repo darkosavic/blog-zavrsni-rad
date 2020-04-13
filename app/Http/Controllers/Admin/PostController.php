@@ -80,6 +80,18 @@ class PostController extends Controller {
         ]);
     }
 
+    public function search(Request $request) {
+        $posts = Post::query()
+                ->where('title', 'LIKE', '%' . $request['search'] . '%')
+                ->orWhere('body', 'LIKE', '%' . $request['search'] . '%')
+                ->orderBy('created_at', 'DESC')
+                ->get();
+
+        return view('admin.home', [
+            'allPosts' => $posts
+        ]);
+    }
+    
     private function getCategories() {
         return Category::query()
                         ->orderBy('name', 'ASC')
@@ -99,7 +111,7 @@ class PostController extends Controller {
                     'body' => ['required', 'string'],
                     'important' => ['nullable', 'boolean'],
                     'disabled' => ['nullable', 'boolean'],
-                    'category_id' => ['required', 'numeric', 'exists:categories,id'],
+                    'category_id' => ['nullable', 'numeric', 'exists:categories,id'],
                     'tag_id' => ['required', 'array', 'exists:tags,id'],
                     'photo' => ['required', 'file', 'image']
         ]);

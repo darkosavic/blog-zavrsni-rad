@@ -60,6 +60,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::get('delete/{post}', 'PostController@deletePost')->name('home.posts.delete');
         Route::get('edit/{post}', 'PostController@openEditPost')->name('home.posts.update');
         Route::post('edit/{post}', 'PostController@updatePost')->name('home.posts.update.submit');
+        Route::post('/search', 'PostController@search')->name('home.posts.search');
     });
 
     Route::prefix('/users')->group(function () {

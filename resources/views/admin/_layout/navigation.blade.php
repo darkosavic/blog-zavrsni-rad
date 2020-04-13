@@ -16,7 +16,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span data-feather="message-square"></span>
-                    Comments
+                    Index slides
                 </a>
             </li>
             <li class="nav-item">

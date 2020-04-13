@@ -7,36 +7,18 @@
 @section('content')
 <!-- Hero Section-->
 <div id="index-slider" class="owl-carousel">
-    <section style="background: url(/themes/front/img/featured-pic-1.jpeg); background-size: cover; background-position: center center" class="hero">
+    @foreach($indexSlides as $slide)
+    <section style="background: url({{$slide->photo}}); background-size: cover; background-position: center center" class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
-                    <h1>Bootstrap 4 Blog - A free template by Bootstrap Temple</h1>
-                    <a href="#" class="hero-link">Discover More</a>
+                    <h1>{{$slide->title}}</h1>
+                    <a href="{{$slide->url}}" class="hero-link">{{$slide->button_text}}</a>
                 </div>
             </div>
         </div>
     </section>
-    <section style="background: url(/themes/front/img/featured-pic-2.jpeg); background-size: cover; background-position: center center" class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <h1>Bootstrap 4 Blog - Some other title in slide</h1>
-                    <a href="#" class="hero-link">Checkout More</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section style="background: url(/themes/front/img/featured-pic-3.jpeg); background-size: cover; background-position: center center" class="hero">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <h1>This is third slide, there will be more!</h1>
-                    <a href="#" class="hero-link">Findout More</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    @endforeach
 </div>
 
 <!-- Intro Section-->
