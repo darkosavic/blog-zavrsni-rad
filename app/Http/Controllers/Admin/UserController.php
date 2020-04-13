@@ -41,6 +41,13 @@ class UserController extends Controller {
 
         return redirect()->route('home.users');
     }
+    
+    public function banUser(User $user) {
+        $user->ban = !$user->ban;
+        $user->save();
+
+        return redirect()->route('home.users');
+    }
 
     public function updateUser(Request $request) {
         $formData = $request->validate([

@@ -65,7 +65,8 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
     });
 
     Route::prefix('/users')->group(function () {
-
+        
+        Route::get('/ban/{user}', 'UserController@banUser')->name('home.users.banUser');
         Route::get('/', 'UserController@index')->name('home.users');
         Route::post('/insert', 'UserController@addUser')->name('home.users.add');
         Route::post('/update', 'UserController@updateUser')->name('home.users.edit');

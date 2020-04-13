@@ -1,7 +1,7 @@
 
 <body class="hold-transition sidebar-mini" style="margin-top: 20px">
     <div class="wrapper">
- <!-- Content Wrapper. Contains page content -->
+        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Main content -->
             <section class="content">
@@ -35,7 +35,13 @@
                                             <tr>
                                                 <td>{{$user->id}}</td>
                                                 <td class="text-center">
-                                                    <span class="text-success">{{$user->ban ? 'Ban' : 'Active'}}</span>
+                                                    <span class="text-success">
+                                                        @if($user->ban)
+                                                        Ban
+                                                        @else
+                                                        Active
+                                                        @endif
+                                                    </span>
                                                 </td>
                                                 <td class="text-center">
                                                     <img src="{{$user->getAvatar()}}" style="max-width: 80px;">
@@ -51,10 +57,8 @@
                                                 </td>
                                                 <td class="text-center">{{$user->created_at}}</td>
                                                 <td class="text-center">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-info" data-toggle="modal">
-                                                            Ban user
-                                                        </button>
+                                                    <div>
+                                                        <a href="{{route('home.users.banUser', ['user' => $user])}}" class="btn btn-primary w-100 p-3">Ban user</a>
                                                     </div>
                                                 </td>
                                             </tr>
