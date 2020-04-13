@@ -89,7 +89,7 @@ class Post extends Model {
     }
 
     public function getPhotoUrl() {
-        if ($this->photo1) {
+        if ($this->imageUrl) {
             return '/storage/posts/' . $this->imageUrl;
         }
 

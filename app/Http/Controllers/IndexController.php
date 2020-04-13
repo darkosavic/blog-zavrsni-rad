@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\GaleryImages;
 use App\Models\Post;
 use App\Models\IndexSlide;
+use App\User;
 
 class IndexController extends Controller
 {

@@ -14,12 +14,12 @@
         <main class="post blog-post col-lg-8"> 
             <div class="container">
                 <div class="post-single">
-                    <div class="post-thumbnail"><img src="/themes/front/img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>
+                    <div class="post-thumbnail"><img src="{{$post->getPhotoUrl()}}" alt="..." class="img-fluid"></div>
                     <div class="post-details">
                         <div class="post-meta d-flex justify-content-between">
                             <div class="category"><a href="{{$post->category->getFrontUrl()}}">{{$post->category->name}}</a></div>
                         </div>
-                        <h1>{{$post->title}}<a href="/themes/front/#"><i class="fa fa-bookmark-o"></i></a></h1>
+                        <h1>{{$post->title}}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                         <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="{{$post->user->getSingleUserUrl()}}" class="author d-flex align-items-center flex-wrap">
                                 <div class="avatar"><img src="{{$post->user->getAvatar()}}" alt="..." class="img-fluid"></div>
                                 <div class="title"><span>{{$post->user->name}}</span></div></a>

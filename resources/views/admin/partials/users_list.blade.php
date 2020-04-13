@@ -35,7 +35,7 @@
                                             <tr>
                                                 <td>{{$user->id}}</td>
                                                 <td class="text-center">
-                                                    <span class="text-success">{{$user->ban}}</span>
+                                                    <span class="text-success">{{$user->ban ? 'Ban' : 'Active'}}</span>
                                                 </td>
                                                 <td class="text-center">
                                                     <img src="{{$user->getAvatar()}}" style="max-width: 80px;">

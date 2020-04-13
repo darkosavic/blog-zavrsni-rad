@@ -2,7 +2,7 @@
 <div class="latest-posts">
     <a href="{{$newestPost->getPostUrl()}}">
         <div class="post d-flex align-items-center">
-            <div class="image"><img src="/themes/front/img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
+            <div class="image"><img src="{{$newestPost->getPhotoThumbUrl()}}" alt="..." class="img-fluid"></div>
             <div class="title">
                 <strong>{{$newestPost->title}}</strong>
                 <span class="date last-meta">{{$newestPost->displayDateForFooterPost()}}</span>

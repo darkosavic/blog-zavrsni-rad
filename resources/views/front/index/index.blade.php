@@ -45,8 +45,8 @@
                                 <h2 class="h4">{{$newFeaturedPosts[0]->title}}</h2></a>
                         </header>
                         <p>{{$newFeaturedPosts[0]->getBodyPreview()}}</p>
-                        <footer class="post-footer d-flex align-items-center"><a href="{{$newFeaturedPosts[0]->getPostUrl()}}" class="author d-flex align-items-center flex-wrap">
-                                <div class="avatar"><img src="/themes/front/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                        <footer class="post-footer d-flex align-items-center"><a href="{{$newFeaturedPosts[0]->user->getSingleUserUrl()}}" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar"><img src="{{$newFeaturedPosts[0]->user->getAvatar()}}" alt="..." class="img-fluid"></div>
                                 <div class="title"><span>{{$newFeaturedPosts[0]->user->name}}</span></div></a>
                             <div class="date"><i class="icon-clock"></i>{{$newFeaturedPosts[0]->getTimeFormattedForUi()}}</div>
                             <div class="comments"><i class="icon-comment"></i>{{$newFeaturedPosts[0]->numberOfViews}}</div>
@@ -54,12 +54,12 @@
                     </div>
                 </div>
             </div>
-            <div class="image col-lg-5"><img src="/themes/front/img/featured-pic-1.jpeg" alt="..."></div>
+            <div class="image col-lg-5"><img src="{{$newFeaturedPosts[0]->getPhotoUrl()}}" alt="..."></div>
         </div>
         @endisset
         @isset($newFeaturedPosts[1])
         <div class="row d-flex align-items-stretch">
-            <div class="image col-lg-5"><img src="/themes/front/img/featured-pic-2.jpeg" alt="..."></div>
+            <div class="image col-lg-5"><img src="{{$newFeaturedPosts[1]->getPhotoUrl()}}" alt="..."></div>
             <div class="text col-lg-7">
                 <div class="text-inner d-flex align-items-center">
                     <div class="content">
@@ -68,8 +68,8 @@
                                 <h2 class="h4">{{$newFeaturedPosts[1]->title}}</h2></a>
                         </header>
                         <p>{{$newFeaturedPosts[1]->getBodyPreview()}}</p>
-                        <footer class="post-footer d-flex align-items-center"><a href="{{$newFeaturedPosts[1]->getPostUrl()}}" class="author d-flex align-items-center flex-wrap">
-                                <div class="avatar"><img src="/themes/front/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                        <footer class="post-footer d-flex align-items-center"><a href="{{$newFeaturedPosts[1]->user->getSingleUserUrl()}}" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar"><img src="{{$newFeaturedPosts[1]->user->getAvatar()}}" alt="..." class="img-fluid"></div>
                                 <div class="title"><span>{{$newFeaturedPosts[1]->user->name}}</span></div></a>
                             <div class="date"><i class="icon-clock"></i>{{$newFeaturedPosts[1]->getTimeFormattedForUi()}}</div>
                             <div class="comments"><i class="icon-comment"></i>{{$newFeaturedPosts[1]->numberOfViews}}</div>
@@ -89,8 +89,8 @@
                                 <h2 class="h4">{{$newFeaturedPosts[2]->title}}</h2></a>
                         </header>
                         <p>{{$newFeaturedPosts[2]->getBodyPreview()}}</p>
-                        <footer class="post-footer d-flex align-items-center"><a href="{{$newFeaturedPosts[2]->getPostUrl()}}" class="author d-flex align-items-center flex-wrap">
-                                <div class="avatar"><img src="/themes/front/img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+                        <footer class="post-footer d-flex align-items-center"><a href="{{$newFeaturedPosts[2]->user->getSingleUserUrl()}}" class="author d-flex align-items-center flex-wrap">
+                                <div class="avatar"><img src="{{$newFeaturedPosts[2]->user->getAvatar()}}" alt="..." class="img-fluid"></div>
                                 <div class="title"><span>{{$newFeaturedPosts[2]->user->name}}</span></div></a>
                             <div class="date"><i class="icon-clock"></i>{{$newFeaturedPosts[2]->getTimeFormattedForUi()}}</div>
                             <div class="comments"><i class="icon-comment"></i>{{$newFeaturedPosts[2]->numberOfViews}}</div>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="image col-lg-5"><img src="/themes/front/img/featured-pic-1.jpeg" alt="..."></div>
+            <div class="image col-lg-5"><img src="{{$newFeaturedPosts[2]->getPhotoUrl()}}" alt="..."></div>
         </div>
         @endisset
     </div>
