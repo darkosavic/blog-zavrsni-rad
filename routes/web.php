@@ -19,6 +19,7 @@ Route::get('/blog', 'BlogController@index')->name('front.blog.index');
 Route::get('/contact', 'ContactController@contactUs')->name('front.contact.contact');
 Route::post('/contact/send-message', 'ContactController@sendMessage')->name('front.contact.sendMessage');
 
+Route::get('/comments/{post}', 'CommentsController@loadAllComments')->name('front.blog.post.comments');
 Route::post('/comment/send-comment/{post}', 'CommentsController@sendComment')->name('front.comment.sendComment');
 
 Route::get('/categories/{category}/{seoSlug?}', 'BlogController@singleCategory')->name('front.blog.single-category');

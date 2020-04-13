@@ -1,4 +1,4 @@
-<form action="{{$post->getSendCommentUrl()}}" class="commenting-form" method="post">
+<form id="add-new-comment" class="commenting-form" method="post">
     @csrf
     <div class="row">
         <div class="form-group col-md-6">

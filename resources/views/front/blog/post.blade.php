@@ -59,16 +59,13 @@
                             @endisset
                         </div>
                         <div class="post-comments" id="post-comments">
-                            <!--Post Comment-->
-                            @include('front.blog.post_partials.post_comment', [
-                            'comments' => $post->comments
-                            ])
+
                         </div>
                         <div class="add-comment">
                             <header>
                                 <h3 class="h6">Leave a reply</h3>
                             </header>
-                            <!--Post Form-->
+<!--                            Post Form-->
                             @include('front.blog.post_partials.add_comment_form')
                         </div>
                     </div>
@@ -103,7 +100,7 @@
 
         // ajax funkcija vraca PROMISE 
         $.ajax({
-            "url": "{{route('front.footer.newest_posts')}}",
+            "url": "{{route('front.blog.post.comments', ['post' => $post])}}",
             "type": "get", //http method GET ili POST
             "data": {}
         }).done(function (response) {
@@ -116,7 +113,47 @@
         });
     }
 
-    //refreshComments(); 
+    refreshComments();
+    function addComment(username, email, usercomment) {
+        $.ajax({
+
+            "url": "{{$post->getSendCommentUrl()}}",
+            "type": "POST",
+            "data": {
+                "_token": "{{csrf_token()}}", //obavezno u Laravelu
+                "username": username,
+                "email": email,
+                "usercomment": usercomment
+            }
+
+        }).done(function (response) {
+
+            console.log(response);
+
+            //alert(response.system_message);
+
+            refreshComments();
+            $('#add-new-comment [name="username"]').text('');
+            $('#add-new-comment [name="email"]').text('');
+            $('#add-new-comment [name="usercomment"]').text('');
+
+
+        }).fail(function () {
+            console.log('Neuspesno dodavanje komentara');
+        });
+    }
+
+    $('#add-new-comment').on('submit', function (e) {
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        let username = $('#add-new-comment [name="username"]').val();
+        let email = $('#add-new-comment [name="email"]').val();
+        let usercomment = $('#add-new-comment [name="usercomment"]').val();
+
+        addComment(username, email, usercomment);
+    });
 
 </script>
 @endpush
