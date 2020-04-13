@@ -69,4 +69,9 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::post('/insert', 'UserController@addUser')->name('home.users.add');
         Route::post('/update', 'UserController@updateUser')->name('home.users.edit');
     });
+    
+    Route::prefix('/slides')->group(function () {
+
+        Route::get('/', 'SlidesController@index')->name('home.slides');
+    });
 });
