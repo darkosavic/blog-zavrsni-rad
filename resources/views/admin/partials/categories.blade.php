@@ -24,15 +24,40 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <button data-action="show-order" class="btn btn-outline-secondary">
+        <i class="fas fa-sort"></i>
+        Change Order
+    </button>
+    <form style="display:none;" id="change-priority-form" class="btn-group" 
+          action="{{route('home.categories.update.order')}}" method="post">
+        @csrf
+        <input type="hidden" name="priorities" value="">
+
+        <button type="submit" class="btn btn-outline-success">
+            <i class="fas fa-check"></i>
+            @lang('Save Order')
+        </button>
+        <button type="button" data-action="hide-order" class="btn btn-outline-danger">
+            <i class="fas fa-remove"></i>
+            @lang('Cancel')
+        </button>
+    </form>
+</div>
+
 @if(session()->has('error'))
 <div class="alert alert-danger" role="alert">
-  Category with given name already exists!
+    Category with given name already exists!
 </div>
 @endif
 <div class="row" style="margin-top: 30px;">
-    <ul class="list-group">
+    <ul class="list-group" id="sortable-list">
         @foreach($categories as $category)
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li class="list-group-item d-flex justify-content-between align-items-center" data-id="{{$category->id}}">
+            <span style="display:none;" class="btn btn-outline-secondary handle">
+                <i class="fas fa-sort"></i>
+            </span>
             <form action="{{$category->getUpdateUrl()}}" method="post">
                 @csrf
                 <div class="input-group">
@@ -42,15 +67,58 @@
                         id="exampleInputEmail1"
                         aria-describedby="emailHelp" 
                         value="{{$category->name}}"
-                        style="margin-right: 10px"
+                        style="margin-right: 10px; margin-left: 10px"
                         name="new_category_name">
                     <button type="submit" class="btn btn-info input-group-btn" style="margin-right: 10px">Save change</button>  
                 </div>
             </form>
+            <a style="margin-right: 10px;" href="{{$category->getFrontUrl()}}" class="btn btn-info">Preview</a>
 
             <a href="{{$category->getDeleteUrl()}}" class="btn btn-danger">Delete category</a>
+            
         </li>
         @endforeach
-    </ul>
+        </ul>
 </div>
 @endsection
+@push('footer_javascript')
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+
+    $('#sortable-list').sortable({
+        "handle": ".handle",
+        "update": function (event, ui) {
+
+            let priorities = $('#sortable-list').sortable('toArray', {
+                "attribute": "data-id"
+            });
+
+            console.log(priorities);
+
+            $('#change-priority-form [name="priorities"]').val(priorities.join(','));
+        }
+    });
+
+    $('[data-action="show-order"]').on('click', function (e) {
+
+        $('[data-action="show-order"]').hide();
+
+        $('#change-priority-form').show();
+
+        $('#sortable-list .handle').show();
+    });
+
+    $('[data-action="hide-order"]').on('click', function (e) {
+
+        $('[data-action="show-order"]').show();
+
+        $('#change-priority-form').hide();
+
+        $('#sortable-list .handle').hide();
+
+        $('#sortable-list').sortable('cancel');
+    });
+
+</script>
+@endpush

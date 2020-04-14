@@ -41,4 +41,23 @@ class CategoryController extends Controller
         $category->save();
         return redirect()->route('home.categories');
     }
+    
+    public function changeOrder(Request $request) {
+        $formData = $request->validate([
+            'priorities' => ['required', 'string'],
+        ]);
+        
+        $priorities = explode(',', $formData['priorities']);
+        foreach ($priorities as $key => $id) {
+            $category = Category::findOrFail($id);
+            
+            $category->priority = $key + 1;
+            
+            $category->save();
+        }
+        
+        session()->flash('system_message', __('Categories have been reordered!'));
+        
+        return redirect()->route('home.categories');
+    }
 }

@@ -23,11 +23,11 @@ class HomeController extends Controller {
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index() {
-        $allPosts = Post::query()
+        $post = Post::query()
                 ->orderBy('updated_at', 'DESC')
                 ->get();
         return view('admin.home', [
-            'allPosts' => $allPosts
+            'allPosts' => $post,
         ]);
     }
 }

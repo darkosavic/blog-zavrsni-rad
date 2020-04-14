@@ -53,7 +53,7 @@
                     <button type="submit" class="btn btn-info input-group-btn" style="margin-right: 10px">Save change</button>  
                 </div>
             </form>
-
+            <a style="margin-right: 10px;" href="{{$tag->getFrontUrl()}}" class="btn btn-info">Preview</a>
             <a href="{{$tag->getDeleteUrl()}}" class="btn btn-danger">Delete tag</a>
         </li>
         @endforeach

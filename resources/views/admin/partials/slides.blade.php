@@ -8,7 +8,7 @@
 <div class="row">
     <div class="collapse multi-collapse" id="multiCollapseExample1">
         <div class="card card-body">
-            <form action="#" method="post" enctype="multipart/form-data">
+            <form action="{{route('home.slides.add')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Slide title</label>
@@ -28,7 +28,7 @@
                         name="button_text">
                 </div>
                 <div class="form-group">
-                    <label for="irl">Button url</label>
+                    <label for="url">Button url</label>
                     <input 
                         type="text" 
                         class="form-control"
@@ -53,7 +53,7 @@
 <div class="row">
     @foreach($slides as $slide)
     <div class="card col-md-4 text-center">
-        <img class="card-img-top" src="{{$slide->photo}}" alt="Card image cap" style="max-width: 256px; align-self: center">
+        <img class="card-img-top" src="{{'/storage/slides/' . $slide->photo}}" alt="Card image cap" style="max-width: 256px; align-self: center">
         <div class="card-body">
             <h5 class="card-title">{{$slide->title}}</h5>
             <p class="card-text">Button Text: <strong>{{$slide->button_text}}</strong></p>
@@ -63,7 +63,7 @@
                     {{$slide->disabled ? 'TRUE' : 'FALSE'}}
                 </strong></p>
 
-            <a href="#" class="btn btn-primary">DISABLE</a>
+            <a href="{{route('home.slides.ableDisable', ['slide' => $slide])}}" class="btn btn-primary">DISABLE</a>
             <a href="#" class="btn btn-primary">DELETE</a>
 
         </div>

@@ -8,7 +8,7 @@
 <!-- Hero Section-->
 <div id="index-slider" class="owl-carousel">
     @foreach($indexSlides as $slide)
-    <section style="background: url({{$slide->photo}}); background-size: cover; background-position: center center" class="hero">
+    <section style="background: url({{'/storage/slides/' . $slide->photo}}); background-size: cover; background-position: center center" class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">

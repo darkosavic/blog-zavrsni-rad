@@ -20,6 +20,9 @@
                             <div class="col-sm-6">
                                 <h1>Your profile</h1>
                             </div>
+                            <div class="col-sm-6 p-0">
+                            <a style="margin-top: 20px;" href="{{Auth::user()->getSingleUserUrl()}}" class="btn btn-info  float-right p-3">Preview</a>
+                            </div>
                             <div class="col-sm-6 w-100 p-3">
 <!--                                <p >
                                     <a class="btn btn-primary w-100 p-3"

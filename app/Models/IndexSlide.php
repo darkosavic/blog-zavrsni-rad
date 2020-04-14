@@ -11,4 +11,17 @@ class IndexSlide extends Model {
         'title', 'button_text', 'photo', 'url', 'disabled'
     ];
 
+    public function deletePhoto() {
+        if (!$this->photo) {
+            return $this;
+        }
+
+        $photoPath = public_path('/storage/slides/' . $this->photo);
+
+        if (is_file($photoPath)) {
+            unlink($photoPath);
+        }
+
+        return $this;
+    }
 }

@@ -131,7 +131,7 @@ class BlogController extends Controller {
 
     private function getCategories() {
         return Category::query()
-                        ->orderBy('name', 'ASC')
+                        ->orderBy('priority', 'ASC')
                         ->get();
     }
 

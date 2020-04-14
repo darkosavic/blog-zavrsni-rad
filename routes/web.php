@@ -50,6 +50,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::post('/', 'CategoryController@addCategory')->name('home.categories.add');
         Route::get('/{category}', 'CategoryController@deleteCategory')->name('home.categories.delete');
         Route::post('/{category}', 'CategoryController@updateCategory')->name('home.categories.update');
+        Route::post('/change/order', 'CategoryController@changeOrder')->name('home.categories.update.order');
     });
 
     Route::prefix('/posts')->group(function () {
@@ -73,7 +74,9 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
     });
     
     Route::prefix('/slides')->group(function () {
-
+        
+        Route::get('/able-disable/{slide}', 'SlidesController@ableDisable')->name('home.slides.ableDisable');
         Route::get('/', 'SlidesController@index')->name('home.slides');
+        Route::post('/', 'SlidesController@addSlide')->name('home.slides.add');       
     });
 });

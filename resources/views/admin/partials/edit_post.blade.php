@@ -5,7 +5,7 @@
 {{$errors}}
 <form action="{{route('home.posts.update.submit', [
       'post' => $post
-      ])}}" method="post" enctype="multipart/form-data">
+      ])}}" method="post" enctype="multipart/form-data" name="edit-post-form">
     @csrf
     <div class="form-group">
         <label for="title">Title</label>
@@ -14,7 +14,9 @@
             class="form-control"
             id="title"
             name="title"
-            value="{{$post->title}}">
+            value="{{$post->title}}"
+            class="form-control @if($errors->has('title')) is-invalid @endif">
+        @include('front._layout.partials.form_errors', ['fieldName' => 'titles'])
     </div>
 
     <div class="form-group">
@@ -25,9 +27,11 @@
             name="preview"
             rows="5"
             minlength="50"
-            maxlength="500">
+            maxlength="500"
+            class="form-control @if($errors->has('preview')) is-invalid @endif">
             {{$post->preview}}
         </textarea>
+        @include('front._layout.partials.form_errors', ['fieldName' => 'preview'])
     </div>
     <div class="form-group">
         <label for="upload_image">Upload featuring picture</label>
@@ -35,7 +39,9 @@
             type="file"
             class="form-control-file"
             name="photo"
-            id="photo">
+            id="photo"
+            class="form-control @if($errors->has('photo')) is-invalid @endif">
+        @include('front._layout.partials.form_errors', ['fieldName' => 'photo'])
     </div>
     <div class="form-group">
         <label for="body">Body</label>
@@ -43,9 +49,11 @@
             class="form-control" 
             id="body"
             name="body"
-            rows="15"> 
+            rows="15"
+            class="form-control @if($errors->has('body')) is-invalid @endif"> 
             {{$post->body}}
         </textarea>
+        @include('front._layout.partials.form_errors', ['fieldName' => 'body'])
 
     </div>
 
@@ -83,6 +91,7 @@
                 >{{$tag->name}}</option>
             @endforeach
         </select>
+        @include('front._layout.partials.form_errors', ['fieldName' => 'your_message'])
     </div>
 
     <div class="form-group">

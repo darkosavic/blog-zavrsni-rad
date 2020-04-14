@@ -21,20 +21,7 @@
     <body>
         <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
             <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{url('/')}}">Go to Blog</a>
-            <div class="widget search col-lg-9">
-            <form action="{{route('home.posts.search')}}" class="search-form" method="post">
-                @csrf
-                <div class="row">
-                    <input 
-                        class="col-lg-11 form-control form-control-dark"
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search"
-                        name="search">
-                    <button type="submit" class="form-control submit image col-lg-1"><span data-feather="search"></span></button>
-                </div>
-            </form>
-            </div>
+            
             <ul class="navbar-nav px-3">
                 <li class="nav-item text-nowrap">
                     <a class="nav-link" href="{{ route('logout') }}"
@@ -42,7 +29,6 @@
                                document.getElementById('logout-form').submit();">
                         Log out
                     </a>
-
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -76,7 +62,7 @@
         <!-- Graphs -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
         <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
         <script>
             CKEDITOR.replace('body');
         </script>
@@ -126,5 +112,7 @@
                 toastr.error(systemError);
             }
         </script>
+        
+        @stack('footer_javascript')
     </body>
 </html>

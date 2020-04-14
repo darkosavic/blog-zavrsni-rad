@@ -59,6 +59,8 @@
                                                 <td class="text-center">
                                                     <div>
                                                         <a href="{{route('home.users.banUser', ['user' => $user])}}" class="btn btn-primary w-100 p-3">Ban user</a>
+                                                        <a style="margin-top: 2px;" href="{{$user->getSingleUserUrl()}}" class="btn btn-info w-100 p-3">Preview</a>
+
                                                     </div>
                                                 </td>
                                             </tr>
@@ -79,29 +81,6 @@
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->
-
-            <div class="modal fade" id="delete-modal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Delete User</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure you want to delete user?</p>
-                            <strong></strong>
-                        </div>
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
 
             <!-- /.modal -->
             <div class="modal fade" id="disable-modal">
