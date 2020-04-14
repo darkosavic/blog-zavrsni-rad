@@ -21,27 +21,7 @@
                                 <h1>Your profile</h1>
                             </div>
                             <div class="col-sm-6 p-0">
-                            <a style="margin-top: 20px;" href="{{Auth::user()->getSingleUserUrl()}}" class="btn btn-info  float-right p-3">Preview</a>
-                            </div>
-                            <div class="col-sm-6 w-100 p-3">
-<!--                                <p >
-                                    <a class="btn btn-primary w-100 p-3"
-                                       data-toggle="collapse"
-                                       href="#multiCollapseExample1"
-                                       role="button"
-                                       aria-expanded="false"
-                                       aria-controls="multiCollapseExample1"
-                                       >Add new</a>
-                                </p>
-                                <p >
-                                    <a class="btn btn-primary w-100 p-3"
-                                       data-toggle="collapse"
-                                       href="#multiCollapseExample1"
-                                       role="button"
-                                       aria-expanded="false"
-                                       aria-controls="multiCollapseExample1"
-                                       >Edit profile</a>
-                                </p>-->
+                                <a style="margin-top: 20px;" href="{{Auth::user()->getSingleUserUrl()}}" class="btn btn-info  float-right p-3">Preview</a>
                             </div>
 
                             @if(session()->has('error'))
@@ -84,6 +64,15 @@
                                aria-controls="edit-user-form"
                                >Edit profile</a>
                         </p>
+                        <p >
+                            <a class="btn btn-primary w-100 p-3"
+                               data-toggle="collapse"
+                               href="#change-password-form"
+                               role="button"
+                               aria-expanded="false"
+                               aria-controls="change-password-form"
+                               >Change password</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -113,14 +102,6 @@
                                 id="user_email"
                                 name="email"
                                 placeholder="example@any.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="user_password">Password</label>
-                            <input 
-                                type="password" 
-                                class="form-control"
-                                id="user_password"
-                                name="password">
                         </div>
                         <div class="form-group">
                             <label for="user_phone">Phone number</label>
@@ -167,14 +148,6 @@
                                 value="{{Auth::user()->email}}">
                         </div>
                         <div class="form-group">
-                            <label for="user_password">New Password</label>
-                            <input 
-                                type="password" 
-                                class="form-control"
-                                id="user_password"
-                                name="password">
-                        </div>
-                        <div class="form-group">
                             <label for="user_phone">Phone number</label>
                             <input 
                                 type="text" 
@@ -190,6 +163,32 @@
                                 class="form-control-file"
                                 name="photo"
                                 id="photo">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- change password -->
+            <div class="collapse multi-collapse" id="change-password-form">
+                <div class="card card-body">
+                    <form action="{{route('home.users.change_password')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <label for="old_password">Old password</label>
+                            <input 
+                                type="password" 
+                                class="form-control"
+                                id="old_password"
+                                name="old_password">
+                        </div>
+                        <div class="form-group">
+                            <label for="new_password">New password</label>
+                            <input 
+                                type="password" 
+                                class="form-control"
+                                id="new_password"
+                                name="new_password">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

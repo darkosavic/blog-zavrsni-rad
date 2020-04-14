@@ -29,7 +29,7 @@ class UserController extends Controller {
             'photo' => ['nullable', 'file', 'image']
         ]);
 
-        $formData['password'] = \Hash::make($request['password']);
+        $formData['password'] = \Hash::make('cubesphp');
 
         $user = new User();
         $user->fill($formData);
@@ -41,7 +41,7 @@ class UserController extends Controller {
 
         return redirect()->route('home.users');
     }
-    
+
     public function banUser(User $user) {
         $user->ban = !$user->ban;
         $user->save();
@@ -57,8 +57,6 @@ class UserController extends Controller {
             'photo' => ['nullable', 'file', 'image']
         ]);
 
-        $formData['password'] = \Hash::make($request['password']);
-
         $user = \Illuminate\Support\Facades\Auth::user();
         $user->fill($formData);
         $user->save();
@@ -66,6 +64,27 @@ class UserController extends Controller {
         $this->handlePhotoUpload($request, $user);
 
         session()->flash('system_message', __('User has been succesfully edited!'));
+
+        return redirect()->route('home.users');
+    }
+
+    public function changePassword(Request $request) {
+        $formData = $request->validate([
+            'old_password' => ['required', 'string'],
+            'new_password' => ['required', 'string']
+        ]);
+
+        $user = \Illuminate\Support\Facades\Auth::user();
+
+        if (\Hash::check($formData['old_password'], $user->password)) {
+            $user->password = \Hash::make($formData['new_password']);
+            $user->save();
+            session()->flash('system_message', __('User has been succesfully edited!'));
+
+            return redirect()->route('home.users');
+        }
+        
+        session()->flash('system_error', __('Old password not correct!'));
 
         return redirect()->route('home.users');
     }
