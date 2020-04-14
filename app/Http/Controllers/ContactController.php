@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ContactFormMail;
 use App\Models\Post;
+use App\Models\Category;
+
 
 class ContactController extends Controller
 {
@@ -15,8 +17,16 @@ class ContactController extends Controller
         $systemMessage = session()->pull('system_message');
         return view('front.contact.contact', [
             'system_message' => $systemMessage,
-            'latestPosts' => $this->getLatestPosts()
+            'latestPosts' => $this->getLatestPosts(),
+            'categories' => $this->getCategories()    
         ]);
+    }
+    
+    private function getCategories() {
+        return Category::query()
+                        ->orderBy('priority', 'DESC')
+                        ->limit(4)
+                        ->get();
     }
     
     public function sendMessage(Request $request) {

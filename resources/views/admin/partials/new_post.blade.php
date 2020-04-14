@@ -2,7 +2,6 @@
 
 @section('seo_title', 'New Post')
 @section('content')
-{{$errors}}
 <form action="{{route('home.posts.new.submit')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
