@@ -14,6 +14,7 @@ class CategoryController extends Controller
     
     public function index() {
         $categories = Category::query()
+                ->where('name', '!=', 'Uncategorized')
                 ->get();
         return view('admin.partials.categories', [
             'categories' => $categories
@@ -32,6 +33,11 @@ class CategoryController extends Controller
     }
     
     public function deleteCategory(Category $category) {
+        $uncategorized = Category::query()->where('name', 'Uncategorized')->first();
+        foreach ($category->posts as $post) {
+            $post->category_id = $uncategorized->id;
+            $post->save();
+        }
         $category->delete();
         return redirect()->route('home.categories');
     }

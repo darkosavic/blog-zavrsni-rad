@@ -28,10 +28,13 @@ class PostController extends Controller {
         return redirect()->route('home');
     }
 
-    public function idnexNew() {
+    public function idnexNew() 
+    {
+        $uncategorized = Category::query()->where('name', 'Uncategorized')->first();
         return view('admin.partials.new_post', [
             'tags' => $this->getTags(),
-            'categories' => $this->getCategories()
+            'categories' => $this->getCategories(),
+            'defaultCategory' => $uncategorized
         ]);
     }
 
@@ -94,6 +97,7 @@ class PostController extends Controller {
     
     private function getCategories() {
         return Category::query()
+                        ->where('name', '!=', 'Uncategorized')
                         ->orderBy('name', 'ASC')
                         ->get();
     }

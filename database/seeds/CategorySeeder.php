@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder {
         
         \DB::table('categories')->truncate();
 
-        $categories = ["Growth", "Local", "Sales", "Tips", "Business"];
+        $categories = ["Growth", "Local", "Sales", "Tips", "Business", "Uncategorized"];
 
         foreach ($categories as $category) {
             \DB::table('categories')->insert([

@@ -51,7 +51,7 @@
             <select class="form-control selectpicker col-lg-12">
                 <optgroup label="Categoreis" data-max-options="2">
                     @foreach($allPosts as $post)
-                    <option>{{$post->category->name}}</option>
+                    <option>-</option>
                     @endforeach
                 </optgroup>
             </select>
