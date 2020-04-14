@@ -64,7 +64,7 @@
                 </strong></p>
 
             <a href="{{route('home.slides.ableDisable', ['slide' => $slide])}}" class="btn btn-primary">DISABLE</a>
-            <a href="#" class="btn btn-primary">DELETE</a>
+            <a href="{{$slide->getDeleteUrl()}}" class="btn btn-primary">DELETE</a>
 
         </div>
     </div>

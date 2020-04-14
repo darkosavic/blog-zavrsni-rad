@@ -77,6 +77,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         
         Route::get('/able-disable/{slide}', 'SlidesController@ableDisable')->name('home.slides.ableDisable');
         Route::get('/', 'SlidesController@index')->name('home.slides');
+        Route::get('/{slide}', 'SlidesController@deleteSlide')->name('home.slides.delete');
         Route::post('/', 'SlidesController@addSlide')->name('home.slides.add');       
     });
 });

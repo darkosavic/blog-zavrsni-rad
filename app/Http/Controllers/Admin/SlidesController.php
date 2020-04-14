@@ -25,6 +25,10 @@ class SlidesController extends Controller {
 
         return redirect()->route('home.slides');
     }
+    public function deleteSlide(IndexSlide $slide) {
+        $slide->delete();
+        return redirect()->route('home.slides');
+    }
 
     public function addSlide(Request $request) {
         $slide = new IndexSlide();

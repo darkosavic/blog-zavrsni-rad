@@ -24,4 +24,10 @@ class IndexSlide extends Model {
 
         return $this;
     }
+    
+    public function getDeleteUrl() {
+        return route('home.slides.delete', [
+            'slide' => $this->id
+        ]);
+    }
 }
