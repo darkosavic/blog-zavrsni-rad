@@ -8,7 +8,10 @@
     <p>You are logged in as {{ Auth::user()->name }}</p>
 </div>
 @include('admin.partials.search', [
-    'allPosts' => $allPosts
+    'allPosts' => $allPosts,
+    'categories' => $categories,
+    'tags' => $tags,
+    'authors' => $authors
 ])
 @foreach($allPosts as $post)
 <div class="card" style="width: 70%; margin-bottom: 20px">

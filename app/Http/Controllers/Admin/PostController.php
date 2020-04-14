@@ -84,14 +84,19 @@ class PostController extends Controller {
     }
 
     public function search(Request $request) {
+        //dd($request);
         $posts = Post::query()
-                ->where('title', 'LIKE', '%' . $request['search'] . '%')
-                ->orWhere('body', 'LIKE', '%' . $request['search'] . '%')
+                ->where('title', 'LIKE', '%' . $request['search_text'] . '%')
+                ->orWhere('important', '=', $request['important'])
+                ->orWhere('disabled', $request['disabled'])
                 ->orderBy('created_at', 'DESC')
                 ->get();
 
         return view('admin.home', [
-            'allPosts' => $posts
+            'allPosts' => $posts,
+            'categories' => $this->getCategories(),
+            'tags' => $this->getTags(),
+            'authors' => $this->getUsers()
         ]);
     }
     
@@ -105,6 +110,11 @@ class PostController extends Controller {
     private function getTags() {
         return Tag::query()
                         ->orderBy('name', 'ASC')
+                        ->get();
+    }
+    
+    private function getUsers() {
+        return \App\User::query()
                         ->get();
     }
 

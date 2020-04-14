@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\Tag;
+use App\User;
 
 class HomeController extends Controller {
 
@@ -28,6 +31,9 @@ class HomeController extends Controller {
                 ->get();
         return view('admin.home', [
             'allPosts' => $post,
+            'categories' => $this->getCategories(),
+            'tags' => $this->getTags(),
+            'authors' => $this->getUsers()
         ]);
     }
     
@@ -39,5 +45,23 @@ class HomeController extends Controller {
         return view('admin.partials.comments', [
             'comments' => $comments
         ]);
+    }
+    
+    private function getCategories() {
+        return Category::query()
+                        ->where('name', '!=', 'Uncategorized')
+                        ->orderBy('name', 'ASC')
+                        ->get();
+    }
+
+    private function getTags() {
+        return Tag::query()
+                        ->orderBy('name', 'ASC')
+                        ->get();
+    }
+    
+    private function getUsers() {
+        return \App\User::query()
+                        ->get();
     }
 }

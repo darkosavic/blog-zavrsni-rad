@@ -16,6 +16,8 @@
 
         <!-- Custom styles for this template -->
         <link href="dashboard.css" rel="stylesheet">
+        
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
         <!-- Toastr -->
         <link rel="stylesheet" href="/themes/admin/plugins/toastr/toastr.min.css">
