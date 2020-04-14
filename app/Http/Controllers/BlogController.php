@@ -9,6 +9,7 @@ use \App\Models\Post;
 use \App\Models\Comment;
 use \App\User;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class BlogController extends Controller {
 
@@ -136,9 +137,18 @@ class BlogController extends Controller {
     }
 
     private function getTags() {
-        return Tag::query()
-                        ->orderBy('name', 'ASC')
-                        ->get();
+        $query = '   SELECT t.*, s.totalCount as total  ' .
+                '   FROM tags AS t LEFT JOIN (  ' .
+                '   	SELECT count(*) as totalCount, tag_id   ' .
+                '   	FROM `tag_post`  ' .
+                '   	GROUP BY tag_id  ' .
+                '   ) as s ON t.id = s.tag_id  ' .
+                '  ORDER BY total DESC  ';
+
+        $result = DB::select(DB::raw($query));
+        return array_map(function($res) {
+            return Tag::find($res->id);
+        }, $result);
     }
 
     private function getLatestPosts() {
