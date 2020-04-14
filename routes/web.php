@@ -83,6 +83,7 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
     });
     
     Route::prefix('/comments')->group(function () {    
-        Route::get('/', 'HomeController@comments')->name('home.comments');      
+        Route::get('/', 'HomeController@comments')->name('home.comments'); 
+        Route::get('/able/{comment}', 'HomeController@able')->name('home.comment.able');
     });
 });

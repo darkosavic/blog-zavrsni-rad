@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Comment;
 use App\User;
 
 class HomeController extends Controller {
@@ -45,6 +46,13 @@ class HomeController extends Controller {
         return view('admin.partials.comments', [
             'comments' => $comments
         ]);
+    }
+    
+    public function able(Comment $comment) {
+        $comment->enabled = !$comment->enabled;
+        $comment->save();
+
+        return redirect()->route('home.comments');
     }
     
     private function getCategories() {

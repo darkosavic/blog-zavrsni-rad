@@ -13,9 +13,7 @@
                 <strong>
                     {{$comment->enabled ? 'ENABLED' : 'DISABLED'}}
                 </strong></p>
-
-            <a href="#" class="btn btn-primary">Enable/Disable</a>
-
+            <a href="{{route('home.comment.able', ['comment' => $comment])}}" class="btn btn-primary">Enable/Disable</a>
         </div>
     </div>
     @endforeach
