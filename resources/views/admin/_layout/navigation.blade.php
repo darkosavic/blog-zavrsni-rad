@@ -20,6 +20,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin/comments')}}">
+                    <span data-feather="message-square"></span>
+                    Comments
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="{{url('/admin/categories')}}">
                     <span data-feather="more-vertical"></span>
                     Categories

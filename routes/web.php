@@ -81,4 +81,8 @@ Route::middleware('auth')->prefix('/admin')->namespace('Admin')->group(function 
         Route::get('/{slide}', 'SlidesController@deleteSlide')->name('home.slides.delete');
         Route::post('/', 'SlidesController@addSlide')->name('home.slides.add');       
     });
+    
+    Route::prefix('/comments')->group(function () {    
+        Route::get('/', 'HomeController@comments')->name('home.comments');      
+    });
 });

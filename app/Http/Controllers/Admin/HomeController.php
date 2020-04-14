@@ -30,4 +30,14 @@ class HomeController extends Controller {
             'allPosts' => $post,
         ]);
     }
+    
+    public function comments() {
+        $comments = \App\Models\Comment::query()
+                ->orderBy('created_at', 'DESC')
+                ->get();
+        
+        return view('admin.partials.comments', [
+            'comments' => $comments
+        ]);
+    }
 }
