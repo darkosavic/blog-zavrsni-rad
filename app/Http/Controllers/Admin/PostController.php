@@ -86,7 +86,7 @@ class PostController extends Controller {
     public function search(Request $request) {
         //dd($request);
         $posts = Post::query()
-                ->where('title', 'LIKE', '%' . $request['search_text'] . '%')
+//                ->where('title', 'LIKE', '%' . $request['search_text'] . '%')
                 ->orWhere('important', '=', $request['important'])
                 ->orWhere('disabled', $request['disabled'])
                 ->orderBy('created_at', 'DESC')

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\GaleryImages;
 use App\Models\Post;
 use App\Models\IndexSlide;
+use App\Models\Category;
 use App\User;
 
 class IndexController extends Controller
@@ -29,7 +30,8 @@ class IndexController extends Controller
             'allGaleryImages' => $galeryImages,
             'newFeaturedPosts' => $newFetaured,
             'latestPosts' => $this->getLatestPosts(),
-            'indexSlides' => $indexSlides
+            'indexSlides' => $indexSlides,
+            "categories" => $this->getCategories(),
         ]); 
     }
     
@@ -52,6 +54,12 @@ class IndexController extends Controller
                 ->get();
         
         return $latestPost; 
+    } 
+    private function getCategories() {
+        return Category::query()
+                        ->orderBy('id', 'ASC')
+                        ->limit(4)
+                        ->get();
     }
 }
 

@@ -15,7 +15,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/admin/slides')}}">
-                    <span data-feather="message-square"></span>
+                    <span data-feather="sliders"></span>
                     Index slides
                 </a>
             </li>

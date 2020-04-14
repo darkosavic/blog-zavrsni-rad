@@ -2,17 +2,15 @@
 
 @section('seo_title', 'Users')
 @section('content')
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
 <!------ Include the above in your HEAD tag ---------->
 
-{{$errors}}
-<div class="container">
+<div class="card p-4 w-100">
     <div class="row">
 
         <!--Your Profile-->
-        <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="card col-xs-12 col-sm-6 col-md-6">
             <div class="well well-sm">
                 <section class="content-header">
                     <div class="container-fluid">

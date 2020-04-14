@@ -27,12 +27,13 @@
                         <li> <a href={{route('front.contact.contact')}}>Contact</a></li>
                         <li> <a href="{{route('home')}}">Login</a></li>
                     </ul>
+                    
                     <ul class="list-unstyled">
-                        <li> <a href="/themes/front/blog-category.html">Growth</a></li>
-                        <li> <a href="/themes/front/blog-category.html">Local</a></li>
-                        <li> <a href="/themes/front/blog-category.html">Sales</a></li>
-                        <li> <a href="/themes/front/blog-category.html">Tips</a></li>
+                        @foreach($categories as $category)
+                        <li> <a href="{{$category->getFrontUrl()}}">{{$category->name}}</a></li>
+                        @endforeach
                     </ul>
+                    
                 </div>
             </div>
             <div id="newestPosts" class="col-md-4">

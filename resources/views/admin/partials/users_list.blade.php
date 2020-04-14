@@ -1,5 +1,5 @@
 
-<body class="hold-transition sidebar-mini" style="margin-top: 20px">
+<body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
