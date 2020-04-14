@@ -2,7 +2,6 @@
 
 @section('seo_title', 'Edit Post')
 @section('content')
-{{$errors}}
 <form action="{{route('home.posts.update.submit', [
       'post' => $post
       ])}}" method="post" enctype="multipart/form-data" name="edit-post-form">
