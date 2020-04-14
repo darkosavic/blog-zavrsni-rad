@@ -31,7 +31,7 @@ class BlogController extends Controller {
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
-        if ($seoSlug != \Str::slug($category->name)){
+        if ($seoSlug != \Str::slug($category->name)) {
             return redirect()->away($category->getFrontUrl());
         }
 
@@ -49,8 +49,8 @@ class BlogController extends Controller {
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
-        
-        if ($seoSlug != \Str::slug($tag->name)){
+
+        if ($seoSlug != \Str::slug($tag->name)) {
             return redirect()->away($tag->getFrontUrl());
         }
 
@@ -84,8 +84,8 @@ class BlogController extends Controller {
                 ->posts()
                 ->orderBy('created_at', 'DESC')
                 ->paginate(4);
-        
-        if ($seoSlug != \Str::slug($user->name)){
+
+        if ($seoSlug != \Str::slug($user->name)) {
             return redirect()->away($user->getSingleUserUrl());
         }
 
@@ -103,12 +103,12 @@ class BlogController extends Controller {
         if (!Auth::check() && $post->disabled) {
             return abort(404);
         }
-        if ($seoSlug != \Str::slug($post->title)){
+        if ($seoSlug != \Str::slug($post->title)) {
             return redirect()->away($post->getPostUrl());
         }
-        
+
         $this->incrementNumberOfViews($post);
-        
+
         $nextPostId = $post->id + 1;
         $previousPostId = $post->id - 1;
 
@@ -123,7 +123,7 @@ class BlogController extends Controller {
             "previousPost" => $previousPost
         ]);
     }
-    
+
     private function incrementNumberOfViews(Post $post) {
         $post->numberOfViews++;
         $post->save();
@@ -142,8 +142,10 @@ class BlogController extends Controller {
     }
 
     private function getLatestPosts() {
+        // tri najposecenija u proslih mesec dana
         return $latestPosts = Post::query()
-                ->orderBy('created_at', 'DESC')
+                ->whereDate('created_at', '>', \Carbon\Carbon::now()->subDays(30))
+                ->orderBy('numberOfViews', 'DESC')
                 ->limit(3)
                 ->get();
     }
